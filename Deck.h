@@ -8,25 +8,20 @@
 #ifndef DECK_H_
 #define DECK_H_
 #include "Card.h"
-#include <vector>
+#include <stack>
 using namespace std;
 
 class Deck{
 	private:
-		vector<Card>* deck;
+		stack<Card>* deck;
 	public:
-		Deck(){
-			deck=new vector<Card>();
-		}
+		Deck();
 		void add(Card newCard);
 		Card withdraw();
-		vector<Card> getDeck();
-		Card getCard(int index);
+		stack<Card> getDeck();
 };
 
-void Deck::add(Card newCard){
 
-}
 
 
 

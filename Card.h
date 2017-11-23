@@ -15,20 +15,10 @@ private:
 	string rank;
 	string suit;
 public:
-	Card(string suitIn, string rankIn){
-		suit=suitIn;
-		rank=rankIn;
-	}
+	Card(string suitIn, string rankIn);
 	string getSuit();
 	string getRank();
 };
 
-string Card::getSuit(){
-	return suit;
-}
-
-string Card::getRank(){
-	return rank;
-}
 
 #endif /* CARD_H_ */
