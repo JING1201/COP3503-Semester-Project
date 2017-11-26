@@ -20,10 +20,10 @@ using namespace std;
 //******************************************************************************
 class Card
 {
-public:
+private:
 	int number;
 	int suit;
-
+public:
 	Card();
 	Card(int number, int suit);
 	void setNumber(int number);
