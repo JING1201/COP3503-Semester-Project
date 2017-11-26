@@ -1,24 +1,40 @@
-/*
- * Card.h
- *
- *  Created on: Oct 31, 2017
- *      Author: lowji
- */
+//******************************************************************************
+//
+// File Name:     Card.h
+//
+// File Overview: Represents a Card containing a number and a suit
 
-#ifndef CARD_H_
-#define CARD_H_
-#include <iostream>
+//******************************************************************************
+
+#ifndef Card_h
+#define Card_h
+
 using namespace std;
 
-class Card {
-private:
-	string rank;
-	string suit;
+//******************************************************************************
+//
+// Class:    Card
+//
+// Notes    : None
+//
+//******************************************************************************
+class Card
+{
 public:
-	Card(string suitIn, string rankIn);
-	string getSuit();
-	string getRank();
-};
+	int number;
+	int suit;
 
+	Card();
+	Card(int number, int suit);
+	void setNumber(int number);
+	void setSuit(int suit);
+	int getNumber();
+	int getSuit();
+	void printCard();
+	void printNumber();
+	void printSuit();
 
-#endif /* CARD_H_ */
+}; // end class Card
+   
+
+#endif // Card_h
