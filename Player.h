@@ -1,6 +1,6 @@
 #include "Deck.h"
 #include <iostream>
-
+#include "Card.h"
 #ifndef PLAYER_H_
 
 #define PLAYER_H_

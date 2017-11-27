@@ -6,7 +6,7 @@
  */
 
 #include "Player.h"
-
+#include "Card.cpp"
 void Player::addOne(Card temp){
 	handOne=temp;
 }
