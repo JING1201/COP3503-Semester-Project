@@ -1,26 +1,40 @@
+//******************************************************************************
+//
+// File Name:     Card.h
+//
+// File Overview: Represents a Card containing a number and a suit
+
+//******************************************************************************
 
 #ifndef Card_h
 #define Card_h
 
 using namespace std;
 
+//******************************************************************************
+//
+// Class:    Card
+//
+// Notes    : None
+//
+//******************************************************************************
 class Card
 {
-private:
+public:
 	int number;
 	int suit;
-public:
+
 	Card();
 	Card(int number, int suit);
-	void setNum(int number);
+	void setNumber(int number);
 	void setSuit(int suit);
-	int getNum();
+	int getNumber();
 	int getSuit();
 	void printCard();
 	void printNumber();
 	void printSuit();
 
-};
+}; // end class Card
    
 
 #endif // Card_h
