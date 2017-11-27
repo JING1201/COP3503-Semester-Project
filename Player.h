@@ -1,5 +1,5 @@
-#include "Hand.h"
 #include "Deck.h"
+#include <iostream>
 
 #ifndef PLAYER_H_
 
@@ -21,9 +21,10 @@ class Player{
   Card getHandOne();
   Card getHandTwo();
   int getTempPool();
-  void setTotalChips();
-  void setTemptPool(int bet);
-  bool raise(int a, int b);
+  void setTotalChips(int chips);
+  void setTempPool(int bet);
+  void resetTempPool();
+  bool raise(int prevBet, int newBet);
   void check();
   void fold();
   void blind();
