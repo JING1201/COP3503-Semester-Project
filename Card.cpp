@@ -21,8 +21,8 @@
 //******************************************************************************                    
 Card::Card()
 {
-   this->setNumber(0);
-   this->setSuit(0);
+   number=0;
+   suit=0;
 } // end Card::Card
 
 //******************************************************************************
@@ -32,14 +32,14 @@ Card::Card()
 //******************************************************************************                    
 Card::Card(int number, int suit)
 {
-   this->setNumber(number);
-   this->setSuit(suit);
+   this->number=number;
+   this->suit=suit;
 } // end Card::Card
 
-void Card::setNumber(int number)
+void Card::setNum(int number)
 {
    this->number = number;
-} // end Card::setNumber
+} // end Card::setNum
 
 //***************************************************************************
 // Function : setSuit
@@ -52,11 +52,11 @@ void Card::setSuit(int suit)
 } // end Card::setSuit
 
 //***************************************************************************
-// Function : getNumber
+// Function : getNum
 // Process  : Accessor for number
 // Notes    : None
 //***************************************************************************
-int Card::getNumber()
+int Card::getNum()
 {
    return this->number;
 } // end Card::getNumber
@@ -95,7 +95,7 @@ void Card::printCard()
 //***************************************************************************
 void Card::printNumber()
 {
-   int number = this->getNumber(); // Obtain the card's number
+   int number = this->getNum(); // Obtain the card's number
 
    if (number > 1 && number < 11)
    	  {

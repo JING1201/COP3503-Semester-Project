@@ -57,4 +57,8 @@ bool Player::raise(int prevBet, int newBet){
 	return true;
 }
 
+void Player::blind(int bet){
+  tempBetPool = bet;
+}
+
 //EVERYTHING AFTER RAISE IS NOT DONE

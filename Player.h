@@ -10,8 +10,8 @@ class Player{
   string name;
   int totalChips=0; 
   int tempBetPool=0; 
-  Card handOne=0;
-  Card handTwo=0; 
+  Card handOne;
+  Card handTwo;
  public: 
  Player(string name): name(name){};
   void addOne(Card temp);
@@ -27,7 +27,7 @@ class Player{
   bool raise(int prevBet, int newBet);
   void check();
   void fold();
-  void blind();
+  void blind(int bet);
   Deck finalHands();
   void gameOver();
 };

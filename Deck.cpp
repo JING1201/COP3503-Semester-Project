@@ -19,7 +19,9 @@ void Deck::add(Card newCard){
 }
 
 Card Deck::withdraw(){
-	return deck->pop();
+	Card temp=deck->top();
+	deck->pop();
+	return temp;
 }
 
 stack<Card> Deck::getDeck(){

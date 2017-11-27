@@ -26,9 +26,9 @@ public:
 
 	Card();
 	Card(int number, int suit);
-	void setNumber(int number);
+	void setNum(int number);
 	void setSuit(int suit);
-	int getNumber();
+	int getNum();
 	int getSuit();
 	void printCard();
 	void printNumber();
