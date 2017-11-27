@@ -20,11 +20,11 @@
 Hand::Hand(Card * card0, Card * card1, Card * card2, Card * card3, Card * card4)
 {
 	type = this->getType();
-	first  = card0;
-	second = card1;
-	third  = card2;
-	fourth = card3;
-	fifth  = card4;
+	first  = *card0;
+	second = *card1;
+	third  = *card2;
+	fourth = *card3;
+	fifth  = *card4;
 }
 
 
