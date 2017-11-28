@@ -21,8 +21,8 @@
 //******************************************************************************                    
 Card::Card()
 {
-   this->setNumber(0);
-   this->setSuit(0);
+   number=0;
+   suit=0;
 } // end Card::Card
 
 //******************************************************************************
@@ -32,8 +32,8 @@ Card::Card()
 //******************************************************************************                    
 Card::Card(int number, int suit)
 {
-   this->setNumber(number);
-   this->setSuit(suit);
+   this->number=number;
+   this->suit=suit;
 } // end Card::Card
 
 void Card::setNumber(int number)

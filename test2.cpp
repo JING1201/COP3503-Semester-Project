@@ -10,7 +10,7 @@
 #include "Hand.h"
 using namespace std;
 
-int main()
+/*int main()
 {
 	Card * one = new Card(5,7);
 	Hand * han = new Hand(Card(10,1), Card(9,1), Card(8,1), Card(7,1), Card(6,1));
@@ -69,4 +69,4 @@ int main()
 	han8->printHand();
 	cout << endl;
 	return 0;
-}
+}*/
