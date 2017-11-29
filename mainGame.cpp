@@ -51,9 +51,14 @@ int main(){
 	AI->setTotalChips(stoi(inputTemp));
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
+<<<<<<< HEAD
        	ui->output("Your blind is "+to_string(human->getTotalChips()));
        	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
 	
+=======
+	ui->output("Your blind is "+human->getTempPool());
+	ui->output("AI has blind of "+AI->getTempPool());
+>>>>>>> 476aa10bbfb8795c12829dae10e189f4a4cdf140
 	//shuffling(automatic shuffled)
        	Deck* deck = new Deck();
 	//draw cards

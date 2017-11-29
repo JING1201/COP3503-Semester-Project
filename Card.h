@@ -23,7 +23,6 @@ class Card
 public:
 	int number;
 	int suit;
-
 	Card();
 	Card(int number, int suit);
 	void setNumber(int number);

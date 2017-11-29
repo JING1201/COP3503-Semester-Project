@@ -8,6 +8,10 @@
 #include "Player.h"
 #include "Card.h"
 
+Player::Player(string name){
+	this->name=name;
+}
+
 void Player::addOne(Card temp){
 	handOne=temp;
 }
