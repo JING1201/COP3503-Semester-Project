@@ -33,7 +33,7 @@ void Deck::shuffle()
 	{
 		for(int j = 0; j < 4; j++)
 		{
-			deck[i + 13 * j] = Card(i, j);
+			deck[i + 13 * j] = Card(i + 2, j);
 		}
 	}
 }
