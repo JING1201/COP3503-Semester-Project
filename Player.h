@@ -13,7 +13,7 @@ class Player{
   Card handOne;
   Card handTwo;
  public: 
- Player(string name): name(name){};
+  Player(string name);
   void addOne(Card temp);
   void addTwo(Card temp);
   int getTotalChips();
