@@ -9,9 +9,11 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "Player.h"
-#include "ConsoleUI.h"
-
+#include "Player.cpp"
+#include "ConsoleUI.cpp"
+#include "Card.cpp"
+#include "Deck.cpp"
+//#include "ConsoleUI.cpp"
 //method to determine if a string is an integer
 bool isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
@@ -33,33 +35,35 @@ bool isInt(string input){
 int main(){
 
 	//set up user interface
-	ConsoleUI*ui=new ConsoleUI();
+  	ConsoleUI* ui = new ConsoleUI();
 
-	ui->welcome();
-
+       	ui->welcome();
+	
 	string inputTemp;
-	inputTemp=ui->input("Input your name: ");
-	string name = inputTemp;
+	inputTemp = ui->input("Input your name: ");
 	Player* human = new Player(inputTemp);
 	Player* AI = new Player("AI");
-
+	
 	//Preflop
+	
 	inputTemp=ui->input("How much do you want the blind to be? ");
 	human->setTotalChips(stoi(inputTemp));
 	AI->setTotalChips(stoi(inputTemp));
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-	ui->output("Your blind is "+human->getTotalChips());
-	ui->output("AI has blind of "+AI->getTotalChips());
+       	ui->output("Your blind is "+to_string(human->getTotalChips()));
+       	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
+	
 	//shuffling(automatic shuffled)
-	Deck* deck = new Deck();
+       	Deck* deck = new Deck();
 	//draw cards
-	human->addOne(deck->draw());
+       	human->addOne(Card(4,2));
 	human->addTwo(deck->draw());
 	
 	//print user's hand
-	(human->getHandOne()).printCard();
-	(human->getHandTwo()).printCard();
+	ui->output("Print "+ human->getName()+"'s hand");
+       	(human->getHandOne()).printCard();
+       	(human->getHandTwo()).printCard();
 	//print table: your pocket, small blind, big blind, pot(needs to make)
 
 	//prompt user decision: raise, bet, check, fold
@@ -70,7 +74,5 @@ int main(){
 	//Turn:  prompt user, update pot and each player stack size(money), user's decision, draw 1 cards into communitycards, print pot and stacksize, print hands, print communitycards
 
 	//River: repeat Turn, and go back to preflop...
-
-
 }
 

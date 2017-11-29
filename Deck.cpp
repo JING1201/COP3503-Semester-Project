@@ -48,9 +48,7 @@ Card Deck::draw()
 		if(deck[k].getNumber() != 0)
 		{
 			Card temp = deck[k];
-			std::cout << " random number is " << k << " " << endl;
 			deck[k] = Card(0, 0);
-			std::cout << " Card temp number is " << temp.getNumber() << " " << endl;
 			return temp;
 		}
 	}
@@ -59,6 +57,6 @@ Card Deck::draw()
 
 Card Deck::getCard(int num, int suit)
 {
-	return deck[num + 13 * suit];
+  return deck[num + 13 * suit];
 }
 

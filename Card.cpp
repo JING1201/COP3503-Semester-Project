@@ -153,6 +153,7 @@ void Card::printSuit()
 	{
 	 cout << "Invalid suit" << " ";
 	}
+	cout<<endl;
 } // end Card::printSuit
 
       
