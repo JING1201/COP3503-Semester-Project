@@ -6,7 +6,7 @@
  */
 
 //created this source file to make the compiler work properly
-
+#include <sstream>
 #include <iostream>
 #include <string>
 #include "Player.h"
@@ -51,12 +51,15 @@ int main(){
 	ui->output("Your opponent name is "+AI->getName());
 	ui->output("Your blind is "+human->getTotalChips());
 	ui->output("AI has blind of "+AI->getTotalChips());
-	//shuffling
-
+	//shuffling(automatic shuffled)
+	Deck* deck = new Deck();
 	//draw cards
-
+	human->addOne(deck->draw());
+	human->addTwo(deck->draw());
+	
 	//print user's hand
-
+	(human->getHandOne()).printCard();
+	(human->getHandTwo()).printCard();
 	//print table: your pocket, small blind, big blind, pot(needs to make)
 
 	//prompt user decision: raise, bet, check, fold
