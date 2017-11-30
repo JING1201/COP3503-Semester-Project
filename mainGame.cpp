@@ -9,11 +9,10 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "Player.cpp"
-#include "ConsoleUI.cpp"
-#include "Card.cpp"
-#include "Deck.cpp"
-//#include "ConsoleUI.cpp"
+#include "Player.h"
+#include "ConsoleUI.h"
+#include "Card.h"
+#include "Deck.h"
 //method to determine if a string is an integer
 bool isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
@@ -51,14 +50,9 @@ int main(){
 	AI->setTotalChips(stoi(inputTemp));
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-<<<<<<< HEAD
-       	ui->output("Your blind is "+to_string(human->getTotalChips()));
-       	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
-	
-=======
-	ui->output("Your blind is "+human->getTempPool());
-	ui->output("AI has blind of "+AI->getTempPool());
->>>>>>> 476aa10bbfb8795c12829dae10e189f4a4cdf140
+	ui->output("Your blind is "+to_string(human->getTotalChips()));
+	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
+
 	//shuffling(automatic shuffled)
        	Deck* deck = new Deck();
 	//draw cards
