@@ -14,14 +14,14 @@
 class Board
 {
 	private:
-		Player human;
-		Player AI;
+		Player* human;
+		Player* AI;
 	    Deck dek = Deck();
 		Card community[5];
 		int blind;
 		int pot;
 	public:
-		Board(Player hum, Player AI);
+		Board(Player* hum, Player* AI);
 		void setCommunity();
 		void setBlind(int bld);
 		void printStack();
