@@ -69,7 +69,16 @@ int main(){
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
-    Board* board = new Board(human, AI);
+    Board bd = Board(human);
+	while(human.getTotalChips() != 0 && AI.getTotalChips() != 0)
+	{
+		bd.preflop();
+		bd.flop();
+		bd.turn();
+		bd.river();
+		bd.clearBoard();
+	}
+	cout << "Game over. ";
 
 	//prompt user decision: raise, bet, check=bet(0), fold
 
