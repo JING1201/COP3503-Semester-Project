@@ -12,6 +12,7 @@
 #include "Card.h"
 #include "Board.h"
 #include "Player.h"
+#include "ConsoleUI.h"
 using namespace std;
 
 //constructor
@@ -38,9 +39,10 @@ void Board::setCommunity()
 
 void Board::printBoard()
 {
-	cout << "The pot is: " << pot << endl;
-	cout << "Your stack size is: " << human.getTotalChips() << endl;
-	cout << "AI's stack size is: " << "Print AI's stack size" << endl << endl;
+	ConsoleUI* ui=new ConsoleUI();
+	ui->output("The pot is: "+pot);
+	ui->output("Your stack size is: "+human.getTotalChips());
+	ui->output("AI's stack size is: "+"Print AI's stack size");
 }
 
 void Board::preflop()
