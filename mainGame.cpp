@@ -68,14 +68,9 @@ int main(){
     (human->getHandTwo()).printCard();
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
-<<<<<<< HEAD
-cout<<"print board: "<<endl;
-Board* board = new Board(human, AI);
-board->printBoard();
-=======
+
     Board* board = new Board(human, AI);
- 
->>>>>>> 5e09d891de898fa80122dd23d0b9e077dbf610fb
+
 	//prompt user decision: raise, bet, check=bet(0), fold
 
 
