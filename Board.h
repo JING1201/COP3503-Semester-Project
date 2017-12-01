@@ -21,7 +21,7 @@ class Board
 		int blind;
 		int pot;
 	public:
-		Board(Player hum);
+		Board(Player hum, Player AI);
 		void setCommunity();
 		void setBlind(int bld);
 		void printStack();

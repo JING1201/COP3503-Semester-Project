@@ -16,9 +16,10 @@ using namespace std;
 
 //constructor
 //initialize the board for a new game
-Board::Board(Player hum)
+Board::Board(Player hum, Player AI)
 {
 	human = hum;
+	this->AI=AI;
 	setCommunity();
 }
 
