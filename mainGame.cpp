@@ -89,13 +89,5 @@ int main(){
 	}
 	cout << "Game over. ";
 
-	//prompt user decision: raise, bet, check=bet(0), fold
-
-
-	//Postflop: prompt user, update pot and each player stack size(money), user's decision, draw 3 cards into communitycards, print pot and stacksize, print hands, print communitycards
-
-	//Turn:  prompt user, update pot and each player stack size(money), user's decision, draw 1 cards into communitycards, print pot and stacksize, print hands, print communitycards
-
-	//River: repeat Turn, and go back to preflop...
 }
 
