@@ -71,8 +71,9 @@ int main(){
 =======
 >>>>>>> 02dab9aa4e5f05795ca15ddee9e37bfd52a1e654
 	//print table: your stack, small blind, big blind, pot(needs to make)
- Board* board = new Board(human, AI);
- 
+cout<<"print board: "<<endl;
+Board* board = new Board(human, AI);
+board->printBoard();
 	//prompt user decision: raise, bet, check=bet(0), fold
 
 

@@ -15,6 +15,7 @@ class Board
 {
 	private:
 		Player human;
+		Player AI;
 	    Deck dek = Deck();
 		Card community[5];
 		int blind;
