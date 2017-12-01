@@ -52,6 +52,15 @@ int main(){
 		inputTemp=ui->input("How much do you want the blind to be? ");
 	}
 
+	//Preflop
+	inputTemp=ui->input("How much do you want to buy-in? ");
+	while(!isInt(inputTemp)){
+		ui->output("Invalid input. Input must be an integer.");
+		inputTemp=ui->input("How much do you want to buy-in? ");
+	}
+	human->setTotalChips(stoi(inputTemp));
+	AI->setTotalChips(stoi(inputTemp));
+
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
 

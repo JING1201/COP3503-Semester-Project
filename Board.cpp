@@ -16,9 +16,10 @@ using namespace std;
 
 //constructor
 //initialize the board for a new game
-Board::Board(Player hum)
+Board::Board(Player* hum, Player* AI)
 {
 	human = hum;
+	this->AI=AI;
 	setCommunity();
 }
 
@@ -38,7 +39,7 @@ void Board::setCommunity()
 void Board::printBoard()
 {
 	cout << "The pot is: " << pot << endl;
-	cout << "Your stack size is: " << human.getTotalChips() << endl;
+	cout << "Your stack size is: " << human->getTotalChips() << endl;
 	cout << "AI's stack size is: " << "Print AI's stack size" << endl << endl;
 }
 
