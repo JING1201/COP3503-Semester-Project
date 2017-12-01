@@ -70,7 +70,7 @@ int main(){
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
     Board bd = Board(human);
-	while(human.getTotalChips() != 0 && AI.getTotalChips() != 0)
+	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
 	{
 		bd.preflop();
 		bd.flop();
