@@ -51,7 +51,6 @@ int main(){
 		ui->output("Invalid input. Blind must be an integer.");
 		inputTemp=ui->input("How much do you want the blind to be? ");
 	}
-	const int BLIND=inputTemp;
 
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
@@ -69,7 +68,8 @@ int main(){
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
-    Board bd = Board(human);
+    Board bd = Board(human,AI);
+    bd.setBlind(stoi(inputTemp));
 	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
 	{
 		bd.preflop();
