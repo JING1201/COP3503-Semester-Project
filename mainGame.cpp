@@ -46,26 +46,23 @@ int main(){
 	//Preflop
 	
 	inputTemp=ui->input("How much do you want the blind to be? ");
-	human->setTotalChips(stoi(inputTemp));
-	AI->setTotalChips(stoi(inputTemp));
+	//const int BLIND=inputTemp;
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-	ui->output("Your blind is "+to_string(human->getTotalChips()));
-	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
 
 	//shuffling(automatic shuffled)
        	Deck* deck = new Deck();
 	//draw cards
-       	human->addOne(Card(4,2));
+    human->addOne(deck->draw());
 	human->addTwo(deck->draw());
 	
 	//print user's hand
 	ui->output("Print "+ human->getName()+"'s hand");
        	(human->getHandOne()).printCard();
        	(human->getHandTwo()).printCard();
-	//print table: your pocket, small blind, big blind, pot(needs to make)
+	//print table: your stack, small blind, big blind, pot(needs to make)
 
-	//prompt user decision: raise, bet, check, fold
+	//prompt user decision: raise, bet, check=bet(0), fold
 
 
 	//Postflop: prompt user, update pot and each player stack size(money), user's decision, draw 3 cards into communitycards, print pot and stacksize, print hands, print communitycards
