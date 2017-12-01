@@ -56,22 +56,19 @@ int main(){
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
 
-<<<<<<< HEAD
 	//shuffling(automatic shuffled)
-       	Deck* deck = new Deck();
+    Deck* deck = new Deck();
 	//draw cards
     human->addOne(deck->draw());
 	human->addTwo(deck->draw());
 	
 	//print user's hand
 	ui->output("Print "+ human->getName()+"'s hand");
-       	(human->getHandOne()).printCard();
-       	(human->getHandTwo()).printCard();
-[
-=======
->>>>>>> 02dab9aa4e5f05795ca15ddee9e37bfd52a1e654
+    (human->getHandOne()).printCard();
+    (human->getHandTwo()).printCard();
+
 	//print table: your stack, small blind, big blind, pot(needs to make)
- Board* board = new Board(human, AI);
+    Board* board = new Board(human, AI);
  
 	//prompt user decision: raise, bet, check=bet(0), fold
 
