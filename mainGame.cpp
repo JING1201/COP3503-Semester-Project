@@ -24,6 +24,7 @@ bool isInt(string input){
 	if (!(s >> x)) {
 		return false;
 	}
+
 	if (s >> c) {
 		return false;
 	}
@@ -46,6 +47,7 @@ int main(){
 	//Preflop
 	
 	inputTemp=ui->input("How much do you want the blind to be? ");
+
 	//const int BLIND=inputTemp;
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
@@ -60,6 +62,7 @@ int main(){
 	ui->output("Print "+ human->getName()+"'s hand");
        	(human->getHandOne()).printCard();
        	(human->getHandTwo()).printCard();
+
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
 	//prompt user decision: raise, bet, check=bet(0), fold
