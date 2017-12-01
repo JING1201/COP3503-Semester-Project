@@ -25,6 +25,7 @@ bool isInt(string input){
 	if (!(s >> x)) {
 		return false;
 	}
+
 	if (s >> c) {
 		return false;
 	}
@@ -47,18 +48,20 @@ int main(){
 	//Preflop
 	
 	inputTemp=ui->input("How much do you want the blind to be? ");
+	try {
 	human->setTotalChips(stoi(inputTemp));
+	}catch (invalid_argument i){
+	  cerr<<"Invalid input"<<endl;
+	}
+
 	AI->setTotalChips(stoi(inputTemp));
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-<<<<<<< HEAD
        	ui->output("Your blind is "+to_string(human->getTotalChips()));
        	ui->output("AI has blind of "+to_string(AI->getTotalChips()));
 	
-=======
 	ui->output("Your blind is "+human->getTempPool());
 	ui->output("AI has blind of "+AI->getTempPool());
->>>>>>> 476aa10bbfb8795c12829dae10e189f4a4cdf140
 	//shuffling(automatic shuffled)
        	Deck* deck = new Deck();
 	//draw cards
@@ -69,7 +72,9 @@ int main(){
 	ui->output("Print "+ human->getName()+"'s hand");
        	(human->getHandOne()).printCard();
        	(human->getHandTwo()).printCard();
+
 	//print table: your pocket, small blind, big blind, pot(needs to make)
+	
 
 	//prompt user decision: raise, bet, check, fold
 
