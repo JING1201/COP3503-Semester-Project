@@ -9,11 +9,11 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "Player.cpp"
-#include "ConsoleUI.cpp"
-#include "Card.cpp"
-#include "Deck.cpp"
-#include "Board.cpp"
+#include "Player.h"
+#include "ConsoleUI.h"
+#include "Card.h"
+#include "Deck.h"
+#include "Board.h"
 //method to determine if a string is an integer
 bool isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
