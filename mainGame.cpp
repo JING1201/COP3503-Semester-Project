@@ -37,7 +37,7 @@ int main(){
 	//set up user interface
   	ConsoleUI* ui = new ConsoleUI();
 
-       	ui->welcome();
+    ui->welcome();
 	
 	string inputTemp;
 	inputTemp = ui->input("Input your name: ");
@@ -47,21 +47,26 @@ int main(){
 	//Preflop
 	
 	inputTemp=ui->input("How much do you want the blind to be? ");
+	while(!isInt(inputTemp)){
+		ui->output("Invalid input. Blind must be an integer.");
+		inputTemp=ui->input("How much do you want the blind to be? ");
+	}
+	const int BLIND=inputTemp;
 
 	//const int BLIND=inputTemp;
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
 
 	//shuffling(automatic shuffled)
-       	Deck* deck = new Deck();
+    Deck* deck = new Deck();
 	//draw cards
     human->addOne(deck->draw());
 	human->addTwo(deck->draw());
 	
 	//print user's hand
 	ui->output("Print "+ human->getName()+"'s hand");
-       	(human->getHandOne()).printCard();
-       	(human->getHandTwo()).printCard();
+    (human->getHandOne()).printCard();
+    (human->getHandTwo()).printCard();
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
