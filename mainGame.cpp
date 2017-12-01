@@ -9,10 +9,11 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "Player.h"
-#include "ConsoleUI.h"
-#include "Card.h"
-#include "Deck.h"
+#include "Player.cpp"
+#include "ConsoleUI.cpp"
+#include "Card.cpp"
+#include "Deck.cpp"
+#include "Board.cpp"
 //method to determine if a string is an integer
 bool isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
@@ -62,9 +63,10 @@ int main(){
 	ui->output("Print "+ human->getName()+"'s hand");
        	(human->getHandOne()).printCard();
        	(human->getHandTwo()).printCard();
-
+[
 	//print table: your stack, small blind, big blind, pot(needs to make)
-
+ Board* board = new Board(human, AI);
+ 
 	//prompt user decision: raise, bet, check=bet(0), fold
 
 
