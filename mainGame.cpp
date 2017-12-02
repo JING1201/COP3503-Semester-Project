@@ -79,14 +79,14 @@ int main(){
 
     Board* bd = new Board(human,AI);
     bd->setBlind(stoi(inputTemp));
-	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
+	/*while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
 	{
 		bd->preflop();
 		bd->flop();
 		bd->turn();
 		bd->river();
 		bd->clearBoard();
-	}
+	}*/
 	cout << "Game over. ";
 
 }

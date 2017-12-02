@@ -12,6 +12,7 @@
 #include "Card.h"
 #include "Board.h"
 #include "Player.h"
+#include "ConsoleUI.h"
 using namespace std;
 
 //constructor
@@ -46,11 +47,14 @@ void Board::printBoard()
 void Board::preflop()
 {
 	printBoard();
+	ConsoleUI* ui=new ConsoleUI();
+	string inputTemp;
 	cout << endl << "Your hand: " << "Print Player One's hand" <<endl;
 	if(true) //player facing a bet
 	{
-		cout << "Fold, Check, or Bet" << endl;
-		//user input
+		inputTemp=ui->input("Fold (1), Check (2), or Bet (3)");
+
+		//switch cases depending on user's choice
 	}
 	else //player not facing a bet
 	{
