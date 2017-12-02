@@ -38,10 +38,10 @@ int main(){
 	human->setTotalChips(stoi(inputTemp));
 	AI->setTotalChips(stoi(inputTemp));
 
-	inputTemp=ui->input("How much do you want the blind to be? ");
+	inputTemp=ui->input("How much do you want the small blind to be? ");
 	while(!help->isInt(inputTemp)||stoi(inputTemp)>(human->getTotalChips()/10)){
 		ui->output("Invalid input. Blind must be an integer that is less than 10% of your chips.");
-		inputTemp=ui->input("How much do you want the blind to be? ");
+		inputTemp=ui->input("How much do you want the small blind to be? ");
 	}
 
 

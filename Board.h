@@ -19,7 +19,7 @@ class Board
 		Player* AI;
 	    Deck dek = Deck();
 		Card community[5];
-		int blind=0;
+		int smallBlind=0;
 		int pot=0;
 		helper* help;
 

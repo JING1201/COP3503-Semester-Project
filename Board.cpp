@@ -30,7 +30,7 @@ Board::Board(Player* hum, Player* AI)
 
 void Board::setBlind(int bld)
 {
-	blind = bld;
+	smallBlind = bld;
 }
 
 void Board::setCommunity()
@@ -57,10 +57,12 @@ void Board::preflop()
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
+	//force user to put in blind
+
 	bool flagForBet=true;
 	while(flagForBet) //player facing a bet
 	{
-		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3){
 			ui->output("Input must be an integer.");
 			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
