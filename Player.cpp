@@ -58,6 +58,7 @@ bool Player::raise(int prevBet, int newBet){
 	}
 	else{
 		setTempPool(newBet);
+		setTotalChips(totalChips-newBet);
 	}
 	return true;
 }
@@ -67,7 +68,11 @@ void Player::blind(int bet){
 }
 
 //EVERYTHING AFTER RAISE IS NOT DONE
-
+void Player::call(Player opp){
+	int change = opp.getTempPool()-tempBetPool;
+	tempBetPool = opp.getTempPool();
+	setTotalChips(totalChips-change);
+}
 void Player::decision(){
 
 }
