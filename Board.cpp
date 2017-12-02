@@ -20,12 +20,13 @@ using namespace std;
 
 //constructor
 //initialize the board for a new game
-Board::Board(Player* hum, Player* AI)
+Board::Board(Player* hum, Player* AI, int smallBlindPlayer)
 {
 	human = hum;
 	this->AI=AI;
 	setCommunity();
 	help=new helper();
+	this->smallBlindPlayer=smallBlindPlayer;
 }
 
 void Board::setBlind(int bld)
@@ -59,10 +60,17 @@ void Board::preflop()
 	(human->getHandTwo()).printCard();
 	//force user to put in blind
 
-	bool flagForBet=true;
-	while(flagForBet) //player facing a bet
+
+	while(human->getTempPool!=AI->getTempPool) //player facing a bet
 	{
-		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
+		if (smallBlindPlayer==1){
+			//AI goes first
+			AI->decision(); //
+		}
+		else if (smallBlindPlayer==0){
+			//player goes first
+		}
+		/*inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3){
 			ui->output("Input must be an integer.");
 			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
@@ -79,7 +87,7 @@ void Board::preflop()
 			break;
 		case 3:
 			break;
-		}
+		}*/
 	}
 
 	//update pot

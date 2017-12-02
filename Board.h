@@ -22,9 +22,10 @@ class Board
 		int smallBlind=0;
 		int pot=0;
 		helper* help;
+		int smallBlindPlayer;
 
 	public:
-		Board(Player* hum, Player* AI);
+		Board(Player* hum, Player* AI, int smallBlindPlayer);
 		void setCommunity();
 		void setBlind(int bld);
 		void printStack();

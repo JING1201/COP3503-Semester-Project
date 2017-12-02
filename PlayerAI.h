@@ -8,14 +8,13 @@
 #ifndef PLAYERAI_H_
 #define PLAYERAI_H_
 
-namespace std {
+#include "Player.h"
 
-class PlayerAI {
+class PlayerAI : public Player {
 public:
 	PlayerAI();
-	virtual ~PlayerAI();
+
 };
 
-} /* namespace std */
 
 #endif /* PLAYERAI_H_ */

@@ -67,3 +67,7 @@ void Player::blind(int bet){
 }
 
 //EVERYTHING AFTER RAISE IS NOT DONE
+
+void Player::decision(){
+
+}
