@@ -22,7 +22,7 @@ class Board
 		int smallBlind=0;
 		int pot=0;
 		helper* help;
-		int smallBlindPlayer;
+		int smallBlindPlayer; //1: ai goes first, 0: player goes first
 
 	public:
 		Board(Player* hum, Player* AI, int smallBlindPlayer);
