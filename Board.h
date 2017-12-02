@@ -31,6 +31,7 @@ class Board
 		void printStack();
 
 		//returns true if folded
+		bool run();
 		bool preflop();
 		bool flop();
 		bool turn();
