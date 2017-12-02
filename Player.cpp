@@ -75,5 +75,6 @@ void Player::call(Player opp){
 
 //only for AI
 void Player::decision(){
+	int strength;
 
 }
