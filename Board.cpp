@@ -88,8 +88,9 @@ bool Board::run()
 			ui->output("Input must be an integer.");
 			inputTemp=ui->input("How much do you want to raise by?");
 		}
-		human.raise(r);
-		human.setPrevBet(r);
+		human.raise(stoi(r));
+		human.setPrevBet(stoi(r));
+		return false;
 	}
 }
 
