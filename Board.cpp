@@ -50,47 +50,48 @@ void Board::printBoard()
 }
 
 bool Board::run()
-{
+{ 
 	string inputTemp;
-	if(human.getTempPool() < AI.getTempPool())
-	{
+	ConsoleUI* ui = new ConsoleUI();
+	if(human->getTempPool() < AI->getTempPool())
+	{ 
 		inputTemp=ui->input("Fold (1), Call (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3)
-		{
+		{   
 			ui->output("Input must be an integer.");
-			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)"); 
 		}
-	}
+	} 
 	else
-	{
+	{ 
 		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3)
 		{
-			ui->output("Input must be an integer.");
-			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
-		}
-	}
+			ui->output("Input must be an integer."); 
+			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)"); 
+		} 
+	} 
 	if(inputTemp == "1")
 	{
 		return true;
 	}
 	else if(inputTemp == "2")
 	{
-		human.call(AI);
+		human->call(AI); 
 		return false;
-	}
-	else
+	} 
+	else 
 	{
-		int prev = AI.getPrevBet();
+		int prev = AI->getPrevBet();  
 		string r = ui->input("How much do you want to raise by?");
-		while (!help->isInt(r)|| stoi(r) < prev*2)
+		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > human->getTotalChips())
 		{
-			ui->output("Input must be an integer.");
-			inputTemp=ui->input("How much do you want to raise by?");
-		}
-		human.raise(stoi(r));
-		human.setPrevBet(stoi(r));
-		return false;
+			ui->output("Input must be an integer and at least double the previous bet.");
+			r=ui->input("How much do you want to raise by?");
+		}  
+		human->raise(stoi(r)); 
+		human->setPrevBet(stoi(r));
+		return false; 
 	}
 }
 
