@@ -69,9 +69,9 @@ void Player::blind(int bet){
   tempBetPool = bet;
 }
 
-void Player::call(Player opp){
-	int change = opp.getTempPool()-tempBetPool;
-	tempBetPool = opp.getTempPool();
+void Player::call(Player* opp){
+	int change = opp->getTempPool()-tempBetPool;
+	tempBetPool = opp->getTempPool();
 	setTotalChips(totalChips-change);
 }
 
