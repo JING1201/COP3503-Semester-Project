@@ -27,7 +27,7 @@ class Player{
   void setTotalChips(int chips);
   void setTempPool(int bet);
   void resetTempPool();
-  bool raise(int newBet);
+  void raise(int newBet);
   void check();
   void fold();
   void blind(int bet);
