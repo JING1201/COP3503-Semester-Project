@@ -8,11 +8,12 @@
 class Player{
  private:
   string name;
-  int totalChips=0; 
-  int tempBetPool=0; 
+  int totalChips=0;
+  int tempBetPool=0;
+  int prevBet = 0;
   Card handOne;
   Card handTwo;
- public: 
+ public:
   Player(string name);
   void addOne(Card temp);
   void addTwo(Card temp);
@@ -21,6 +22,8 @@ class Player{
   Card getHandOne();
   Card getHandTwo();
   int getTempPool();
+  int getPrevBet();
+  void setPrevBet(int num);
   void setTotalChips(int chips);
   void setTempPool(int bet);
   void resetTempPool();
