@@ -61,7 +61,7 @@ void Board::preflop()
 	//force user to put in blind
 
 
-	while(human->getTempPool!=AI->getTempPool) //player facing a bet
+	while(human->getTempPool()!=AI->getTempPool()) //player facing a bet
 	{
 		if (smallBlindPlayer==1){
 			//AI goes first
@@ -175,4 +175,10 @@ void Board::clearBoard()
 {
 	dek.shuffle();
 	setCommunity();
+	if (smallBlindPlayer==0){
+		smallBlindPlayer=1;
+	}
+	else{
+		smallBlindPlayer=0;
+	}
 }
