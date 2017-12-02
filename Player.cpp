@@ -39,7 +39,14 @@ Card Player::getHandTwo(){
 int Player::getTempPool(){
 	return tempBetPool;
 }
-
+int Player::getPrevBet()
+{
+	return prevBet;
+}
+void Player::setPrevBet(int num)
+{
+	prevBet = num;
+}
 void Player::setTotalChips(int chips){
 	totalChips=chips;
 }
@@ -52,15 +59,10 @@ void Player::resetTempPool(){
 	tempBetPool=0;
 }
 
-bool Player::raise(int prevBet, int newBet){
-	if (newBet<=prevBet){
-		return false;
-	}
-	else{
-		setTempPool(newBet);
-		setTotalChips(totalChips-newBet);
-	}
-	return true;
+void Player::raise(int newBet){
+
+	setTempPool(tempBetPool + newBet);
+	setTotalChips(totalChips-newBet);
 }
 
 void Player::blind(int bet){
