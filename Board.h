@@ -10,6 +10,7 @@
 #define BOARD_H_
 #include "Card.h"
 #include "Player.h"
+#include "helper.h"
 
 class Board
 {
@@ -18,8 +19,10 @@ class Board
 		Player* AI;
 	    Deck dek = Deck();
 		Card community[5];
-		int blind;
-		int pot;
+		int blind=0;
+		int pot=0;
+		helper* help;
+
 	public:
 		Board(Player* hum, Player* AI);
 		void setCommunity();

@@ -6,10 +6,6 @@
 
 #include <iostream>
 #include "Card.h"
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f3c22bcca68249cc632d7767565a44c4c0a1cea
 using namespace std;
 //******************************************************************************
 // File scope (static) variable definitions

@@ -7,13 +7,16 @@
 //******************************************************************************
 
 #include <iostream>
+#include <sstream>
 #include "Deck.h"
 #include "Hand.h"
 #include "Card.h"
 #include "Board.h"
 #include "Player.h"
 #include "ConsoleUI.h"
+#include "helper.h"
 using namespace std;
+
 
 //constructor
 //initialize the board for a new game
@@ -22,6 +25,7 @@ Board::Board(Player* hum, Player* AI)
 	human = hum;
 	this->AI=AI;
 	setCommunity();
+	help=new helper();
 }
 
 void Board::setBlind(int bld)
@@ -49,18 +53,33 @@ void Board::preflop()
 	printBoard();
 	ConsoleUI* ui=new ConsoleUI();
 	string inputTemp;
-	cout << endl << "Your hand: " << "Print Player One's hand" <<endl;
-	if(true) //player facing a bet
+	//print user's hand
+	ui->output("Your hand: ");
+	(human->getHandOne()).printCard();
+	(human->getHandTwo()).printCard();
+	bool flagForBet=true;
+	while(flagForBet) //player facing a bet
 	{
-		inputTemp=ui->input("Fold (1), Check (2), or Bet (3)");
-
+		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3){
+			ui->output("Input must be an integer.");
+			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+		}
 		//switch cases depending on user's choice
+		int choice=stoi(inputTemp);
+		switch(choice){
+		case 1:
+			//end the round, goto another round of preflop
+			break;
+		case 2:
+			human->setTempPool(blind);
+			//anything else to do
+			break;
+		case 3:
+			break;
+		}
 	}
-	else //player not facing a bet
-	{
-		cout << "Check or Bet" << endl;
-		//user input
-	}
+
 	//update pot
 	//update player's stack
 	//update AI's stack

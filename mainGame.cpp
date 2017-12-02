@@ -14,24 +14,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Board.h"
-//method to determine if a string is an integer
-bool isInt(string input){
-	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
-
-	int x; //temporary int variable for checking input validity
-	char c; //temporary char variable for checking input validity
-	istringstream s(input);
-
-	if (!(s >> x)) {
-		return false;
-	}
-
-	if (s >> c) {
-		return false;
-	}
-
-	return true;
-}
+#include "helper.h"
 
 int main(){
 
@@ -44,22 +27,25 @@ int main(){
 	inputTemp = ui->input("Input your name: ");
 	Player* human = new Player(inputTemp);
 	Player* AI = new Player("AI");
-	
-	//Preflop
-	inputTemp=ui->input("How much do you want the blind to be? ");
-	while(!isInt(inputTemp)){
-		ui->output("Invalid input. Blind must be an integer.");
-		inputTemp=ui->input("How much do you want the blind to be? ");
-	}
 
-	//Preflop
+	helper* help=new helper();
+
 	inputTemp=ui->input("How much do you want to buy-in? ");
-	while(!isInt(inputTemp)){
+	while(!help->isInt(inputTemp)){
 		ui->output("Invalid input. Input must be an integer.");
 		inputTemp=ui->input("How much do you want to buy-in? ");
 	}
 	human->setTotalChips(stoi(inputTemp));
 	AI->setTotalChips(stoi(inputTemp));
+
+	inputTemp=ui->input("How much do you want the blind to be? ");
+	while(!help->isInt(inputTemp)||stoi(inputTemp)>(human->getTotalChips()/10)){
+		ui->output("Invalid input. Blind must be an integer that is less than 10% of your chips.");
+		inputTemp=ui->input("How much do you want the blind to be? ");
+	}
+
+
+
 
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
@@ -70,23 +56,20 @@ int main(){
     human->addOne(deck->draw());
 	human->addTwo(deck->draw());
 	
-	//print user's hand
-	ui->output("Print "+ human->getName()+"'s hand");
-    (human->getHandOne()).printCard();
-    (human->getHandTwo()).printCard();
+
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
     Board* bd = new Board(human,AI);
     bd->setBlind(stoi(inputTemp));
-	/*while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
+	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
 	{
 		bd->preflop();
 		bd->flop();
 		bd->turn();
 		bd->river();
 		bd->clearBoard();
-	}*/
+	}
 	cout << "Game over. ";
 
 }
