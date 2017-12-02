@@ -110,7 +110,7 @@ bool Board::preflop()
 	{
 		if (smallBlindPlayer==1){
 			//AI goes first
-			AI->decision(); //
+			AI->decision(pot); //
 		}
 		else if (smallBlindPlayer==0){
 			//player goes first

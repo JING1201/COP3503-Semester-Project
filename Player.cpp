@@ -7,6 +7,8 @@
 
 #include "Player.h"
 #include "Card.h"
+#include "helper.h"
+#include "Board.h"
 
 Player::Player(string name){
 	this->name=name;
@@ -60,7 +62,6 @@ void Player::resetTempPool(){
 }
 
 void Player::raise(int newBet){
-
 	setTempPool(tempBetPool + newBet);
 	setTotalChips(totalChips-newBet);
 }
@@ -76,7 +77,22 @@ void Player::call(Player* opp){
 }
 
 //only for AI
-void Player::decision(){
-	int strength;
-
+void Player::decision(int pot){
+	helper* help=new helper();
+	help->setStrengthChart();
+	int strength=help->getStrength(&handOne,&handTwo);
+	switch(strength){
+	case 4:
+		this->raise(2*pot);
+		break;
+	case 3:
+		this->raise(pot*2/3);
+		break;
+	case 2:
+		this->raise(pot/3);
+		break;
+	default:
+		//this->call()
+		break;
+	}
 }

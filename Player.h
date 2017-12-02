@@ -34,6 +34,6 @@ class Player{
   Deck finalHands();
   void gameOver();
   void call(Player* opp);
-  void decision();
+  void decision(int pot);
 };
 #endif
