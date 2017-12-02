@@ -49,7 +49,7 @@ void Board::printBoard()
 	cout << "AI's stack size is: " << "Print AI's stack size" << endl << endl;
 }
 
-void Board::preflop()
+bool Board::preflop()
 {
 	printBoard();
 	ConsoleUI* ui=new ConsoleUI();
@@ -94,9 +94,10 @@ void Board::preflop()
 	//update player's stack
 	//update AI's stack
 	printBoard();
+	return false;
 }
 
-void Board::flop()
+bool Board::flop()
 {
 	printBoard();
 	cout << "The flop is " << endl;
@@ -118,9 +119,10 @@ void Board::flop()
 	//update player's stack
 	printBoard();
 
+	return false;
 }
 
-void Board::turn()
+bool Board::turn()
 {
 	printBoard();
 	cout << "The turn is " << endl;
@@ -143,9 +145,10 @@ void Board::turn()
 	//update player's stack
 	printBoard();
 
+	return false;
 }
 
-void Board::river()
+bool Board::river()
 {
 	printBoard();
 	cout << "The flop is " << endl;
@@ -168,7 +171,7 @@ void Board::river()
 	//update pot
 	//update player's stack
 	printBoard();
-
+	return false;
 }
 
 void Board::clearBoard()

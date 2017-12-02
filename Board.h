@@ -29,10 +29,13 @@ class Board
 		void setCommunity();
 		void setBlind(int bld);
 		void printStack();
-		void preflop();
-		void flop();
-		void turn();
-		void river();
+
+		//returns true if folded
+		bool preflop();
+		bool flop();
+		bool turn();
+		bool river();
+
 		void printBoard();
 		void clearBoard();
 };

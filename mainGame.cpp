@@ -62,13 +62,27 @@ int main(){
 
     Board* bd = new Board(human,AI,0);
     bd->setBlind(stoi(inputTemp));
+    bool foldFlag;
 	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
 	{
-		bd->preflop();
-		bd->flop();
-		bd->turn();
-		bd->river();
+		foldFlag=false;
 		bd->clearBoard();
+		foldFlag=bd->preflop(); //returns true if folded
+		if (foldFlag){
+			continue;
+		}
+		foldFlag=bd->flop();
+		if (foldFlag){
+			continue;
+		}
+		foldFlag=bd->turn();
+		if (foldFlag){
+			continue;
+		}
+		foldFlag=bd->river();
+		if (foldFlag){
+			continue;
+		}
 	}
 	cout << "Game over. ";
 

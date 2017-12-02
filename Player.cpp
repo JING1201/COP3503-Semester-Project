@@ -73,6 +73,7 @@ void Player::call(Player opp){
 	tempBetPool = opp.getTempPool();
 	setTotalChips(totalChips-change);
 }
+
 void Player::decision(){
 
 }
