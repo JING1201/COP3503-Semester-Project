@@ -33,7 +33,7 @@ class Player{
   void blind(int bet);
   Deck finalHands();
   void gameOver();
-  void call(Player opp);
+  void call(Player* opp);
   void decision();
 };
 #endif
