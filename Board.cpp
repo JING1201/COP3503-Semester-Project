@@ -40,6 +40,11 @@ void Board::setCommunity()
 	{
 		community[i] = dek.draw();
 	}
+	//set player cards
+	human->addOne(dek.draw());
+	human->addTwo(dek.draw());
+	AI->addOne(dek.draw());
+	AI->addTwo(dek.draw());
 }
 
 void Board::printBoard()
@@ -269,6 +274,47 @@ bool Board::river()
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
 	printBoard();
+
+	//after everything is done
+	Hand* humanBest=help->bestHand((human->getHandOne()),(human->getHandTwo()),
+					community[0],community[1],community[2],community[3],community[4]);
+	Hand* AIBest=help->bestHand((AI->getHandOne()),(AI->getHandTwo()),
+			community[0],community[1],community[2],community[3],community[4]);
+	int result=help->compareHands(humanBest,AIBest);
+	ui->output("Community Cards: ");
+	for (int i=0;i<5;i++){
+		community[i].printCard();
+	}
+	ui->output("AI's cards: ");
+	AI->getHandOne().printCard();
+	AI->getHandTwo().printCard();
+	ui->output("Your cards: ");
+	human->getHandOne().printCard();
+	human->getHandTwo().printCard();
+
+	ui->output("Your best hand: ");
+	humanBest->printHand();
+	ui->output("");
+	ui->output("AI's best hand: ");
+	AIBest->printHand();
+	if (result==1){
+		ui->output("You won.");
+		human->setTotalChips(human->getTotalChips()+pot);
+	}
+	else if (result==0){
+		ui->output("AI won");
+		AI->setTotalChips(AI->getTotalChips()+pot);
+	}
+	else{
+		ui->output("Tie");
+		human->setTotalChips(human->getTotalChips()+pot/2);
+		AI->setTotalChips(AI->getTotalChips()+pot/2);
+	}
+	//cout<<"Result: "<<result<<endl;
+	human->resetTempPool();
+	AI->resetTempPool();
+	pot=0;
+
 	return false;
 }
 

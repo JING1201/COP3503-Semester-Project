@@ -49,12 +49,6 @@ int main(){
 
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-
-	//shuffling(automatic shuffled)
-    Deck* deck = new Deck();
-	//draw cards
-    human->addOne(deck->draw());
-	human->addTwo(deck->draw());
 	
 
 
