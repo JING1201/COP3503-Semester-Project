@@ -46,7 +46,7 @@ void Board::printBoard()
 {
 	cout << "The pot is: " << pot << endl;
 	cout << "Your stack size is: " << human->getTotalChips() << endl;
-	cout << "AI's stack size is: " << "Print AI's stack size" << endl << endl;
+	cout << "AI's stack size is: " << AI->getTotalChips() << endl << endl;
 }
 
 bool Board::run()
@@ -78,6 +78,8 @@ bool Board::run()
 	else if(inputTemp == "2")
 	{
 		human->call(AI);
+		pot=human->getTempPool()+AI->getTempPool();
+		printBoard();
 		return false;
 	}
 	else
@@ -90,11 +92,22 @@ bool Board::run()
 			r=ui->input("How much do you want to raise by?");
 		}
 		human->raise(stoi(r));
+		pot=human->getTempPool()+AI->getTempPool();
 		human->setPrevBet(stoi(r));
+		printBoard();
 		return false;
 	}
+
 }
 
+bool Board::runAI(){
+	ConsoleUI* ui = new ConsoleUI();
+	ui->output("AI's turn: ");
+	AI->call(human); //for now
+	pot=AI->getTempPool()+human->getTempPool();
+	printBoard();
+	return false;
+}
 bool Board::preflop()
 {
 	printBoard();
@@ -105,41 +118,32 @@ bool Board::preflop()
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
 	//force user to put in blind
-
-
+	pot=smallBlind*3;
+	if (smallBlindPlayer==1){
+		AI->raise(smallBlind);
+		human->raise(smallBlind*2);
+	}
+	else{
+		human->raise(smallBlind);
+		AI->raise(smallBlind*2);
+	}
+	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
+	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
+	cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	while(human->getTempPool()!=AI->getTempPool()) //player facing a bet
 	{
 		if (smallBlindPlayer==1){
 			//AI goes first
-			AI->decision(pot); //
+			this->runAI();
 		}
 		else if (smallBlindPlayer==0){
 			//player goes first
-			this->run();
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
 		}
-		/*inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
-		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3){
-			ui->output("Input must be an integer.");
-			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
-		}
-		//switch cases depending on user's choice
-		int choice=stoi(inputTemp);
-		switch(choice){
-		case 1:
-			//end the round, goto another round of preflop
-			break;
-		case 2:
-			human->setTempPool(blind);
-			//anything else to do
-			break;
-		case 3:
-			break;
-		}*/
 	}
-
-	//update pot
-	//update player's stack
-	//update AI's stack
 	printBoard();
 	return false;
 }
@@ -147,25 +151,40 @@ bool Board::preflop()
 bool Board::flop()
 {
 	printBoard();
+	ConsoleUI* ui=new ConsoleUI();
 	cout << "The flop is " << endl;
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
-	cout << endl << "Your hand: " << "Print Player One's hand" <<endl;
-	if(true) //player facing a bet
-	{
-		cout << "Fold, Check, or Bet" << endl;
-		//user input
-	}
-	else //player not facing a bet
-	{
-		cout << "Check or Bet" << endl;
-		//user input
-	}
-	//update pot
-	//update player's stack
-	printBoard();
+	//print user's hand
+	ui->output("Your hand: ");
+	(human->getHandOne()).printCard();
+	(human->getHandTwo()).printCard();
 
+	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
+	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
+	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	do
+	{
+		if (smallBlindPlayer==1){
+			//AI goes first
+			this->runAI();
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+		}
+		else if (smallBlindPlayer==0){
+			//player goes first
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+			this->runAI();
+		}
+	}
+	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
+	printBoard();
 	return false;
 }
 
@@ -177,21 +196,37 @@ bool Board::turn()
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
-	cout << endl << "Your hand: " << "Print Player One's hand" <<endl;
-	if(true) //player facing a bet
-	{
-		cout << "Fold, Check, or Bet" << endl;
-		//user input
-	}
-	else //player not facing a bet
-	{
-		cout << "Check or Bet" << endl;
-		//user input
-	}
-	//update pot
-	//update player's stack
-	printBoard();
 
+	ConsoleUI* ui=new ConsoleUI();
+	//print user's hand
+	ui->output("Your hand: ");
+	(human->getHandOne()).printCard();
+	(human->getHandTwo()).printCard();
+
+	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
+	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
+	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	do
+	{
+		if (smallBlindPlayer==1){
+			//AI goes first
+			this->runAI();
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+		}
+		else if (smallBlindPlayer==0){
+			//player goes first
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+			this->runAI();
+		}
+	}
+	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
+	printBoard();
 	return false;
 }
 
@@ -204,19 +239,35 @@ bool Board::river()
 	community[2].printCard();
 	community[3].printCard();
 	community[4].printCard();
-	cout << endl << "Your hand: " << "Print Player One's hand" <<endl;
-	if(true) //player facing a bet
+	ConsoleUI* ui=new ConsoleUI();
+	//print user's hand
+	ui->output("Your hand: ");
+	(human->getHandOne()).printCard();
+	(human->getHandTwo()).printCard();
+
+	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
+	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
+	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	do
 	{
-		cout << "Fold, Check, or Bet" << endl;
-		//user input
+		if (smallBlindPlayer==1){
+			//AI goes first
+			this->runAI();
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+		}
+		else if (smallBlindPlayer==0){
+			//player goes first
+			bool flag=this->run();
+			if (flag==true){
+				return true;
+			}
+			this->runAI();
+		}
 	}
-	else //player not facing a bret
-	{
-		cout << "Check or Bet" << endl;
-		//user input
-	}
-	//update pot
-	//update player's stack
+	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
 	printBoard();
 	return false;
 }

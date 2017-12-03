@@ -32,6 +32,7 @@ class Board
 
 		//returns true if folded
 		bool run();
+		bool runAI();
 		bool preflop();
 		bool flop();
 		bool turn();

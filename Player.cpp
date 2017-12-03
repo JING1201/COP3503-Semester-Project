@@ -78,6 +78,7 @@ void Player::call(Player* opp){
 
 //only for AI
 void Player::decision(int pot){
+	string inputTemp;
 	helper* help=new helper();
 	help->setStrengthChart();
 	int strength=help->getStrength(&handOne,&handTwo);

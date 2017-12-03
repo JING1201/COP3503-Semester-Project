@@ -60,7 +60,7 @@ int main(){
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 
-    Board* bd = new Board(human,AI,0);
+    Board* bd = new Board(human,AI,1);
     bd->setBlind(stoi(inputTemp));
     bool foldFlag;
 	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
