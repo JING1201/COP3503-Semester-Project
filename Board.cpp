@@ -157,13 +157,11 @@ bool Board::preflop()
 			this->runAI();
 		}
 	}
-	printBoard();
 	return false;
 }
 
 bool Board::flop()
 {
-	printBoard();
 	ConsoleUI* ui=new ConsoleUI();
 	cout << "The flop is " << endl;
 	community[0].printCard();
@@ -201,13 +199,12 @@ bool Board::flop()
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
-	printBoard();
+
 	return false;
 }
 
 bool Board::turn()
 {
-	printBoard();
 	cout << "The turn is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -245,13 +242,11 @@ bool Board::turn()
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
-	printBoard();
 	return false;
 }
 
 bool Board::river()
 {
-	printBoard();
 	cout << "The river is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -290,7 +285,6 @@ bool Board::river()
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
-	printBoard();
 
 	//after everything is done
 	Hand* humanBest=help->bestHand((human->getHandOne()),(human->getHandTwo()),
