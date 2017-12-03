@@ -122,6 +122,7 @@ bool Board::preflop()
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
+	ui->output("");
 	//force user to put in blind
 	pot=smallBlind*3;
 	if (smallBlindPlayer==1){
@@ -140,13 +141,20 @@ bool Board::preflop()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			this->runAI();
+			bool flag=this->run();
+			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
+				return true;
+			}
 		}
 		else if (smallBlindPlayer==0){
 			//player goes first
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
+			this->runAI();
 		}
 	}
 	printBoard();
@@ -161,10 +169,12 @@ bool Board::flop()
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
+	cout << endl;
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
+	ui->output("");
 
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
@@ -176,6 +186,7 @@ bool Board::flop()
 			this->runAI();
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 		}
@@ -183,6 +194,7 @@ bool Board::flop()
 			//player goes first
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 			this->runAI();
@@ -201,13 +213,13 @@ bool Board::turn()
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
-
+	cout << endl;
 	ConsoleUI* ui=new ConsoleUI();
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-
+	ui->output("");
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
 	cout<<"small blind player : "<<smallBlindPlayer<<endl;
@@ -218,6 +230,7 @@ bool Board::turn()
 			this->runAI();
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 		}
@@ -225,6 +238,7 @@ bool Board::turn()
 			//player goes first
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 			this->runAI();
@@ -238,18 +252,19 @@ bool Board::turn()
 bool Board::river()
 {
 	printBoard();
-	cout << "The flop is " << endl;
+	cout << "The river is " << endl;
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
 	community[4].printCard();
+	cout << endl;
 	ConsoleUI* ui=new ConsoleUI();
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-
+	ui->output("");
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
 	cout<<"small blind player : "<<smallBlindPlayer<<endl;
@@ -260,6 +275,7 @@ bool Board::river()
 			this->runAI();
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 		}
@@ -267,6 +283,7 @@ bool Board::river()
 			//player goes first
 			bool flag=this->run();
 			if (flag==true){
+				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
 			this->runAI();
@@ -285,18 +302,21 @@ bool Board::river()
 	for (int i=0;i<5;i++){
 		community[i].printCard();
 	}
+	ui->output("");
 	ui->output("AI's cards: ");
 	AI->getHandOne().printCard();
 	AI->getHandTwo().printCard();
+	ui->output("");
 	ui->output("Your cards: ");
 	human->getHandOne().printCard();
 	human->getHandTwo().printCard();
-
+	ui->output("");
 	ui->output("Your best hand: ");
 	humanBest->printHand();
 	ui->output("");
 	ui->output("AI's best hand: ");
 	AIBest->printHand();
+	ui->output("");
 	if (result==1){
 		ui->output("You won.");
 		human->setTotalChips(human->getTotalChips()+pot);
@@ -311,15 +331,14 @@ bool Board::river()
 		AI->setTotalChips(AI->getTotalChips()+pot/2);
 	}
 	//cout<<"Result: "<<result<<endl;
-	human->resetTempPool();
-	AI->resetTempPool();
-	pot=0;
-
 	return false;
 }
 
 void Board::clearBoard()
 {
+	human->resetTempPool();
+	AI->resetTempPool();
+	pot=0;
 	dek.shuffle();
 	setCommunity();
 	if (smallBlindPlayer==0){

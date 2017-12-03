@@ -63,19 +63,65 @@ int main(){
 		bd->clearBoard();
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
+			//there's probably an easier way to do this
+			inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			while(inputTemp != "Y" && inputTemp != "N"){
+				ui->output("Please select Y or N");
+				inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			}
+			if(inputTemp == "N")
+			{
+				break;
+			}
 			continue;
 		}
 		foldFlag=bd->flop();
 		if (foldFlag){
+			inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			while(inputTemp != "Y" && inputTemp != "N"){
+				ui->output("Please select Y or N");
+				inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			}
+			if(inputTemp == "N")
+			{
+				break;
+			}
 			continue;
 		}
 		foldFlag=bd->turn();
 		if (foldFlag){
+			inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			while(inputTemp != "Y" && inputTemp != "N"){
+				ui->output("Please select Y or N");
+				inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			}
+			if(inputTemp == "N")
+			{
+				break;
+			}
 			continue;
 		}
 		foldFlag=bd->river();
 		if (foldFlag){
+			inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			while(inputTemp != "Y" && inputTemp != "N"){
+				ui->output("Please select Y or N");
+				inputTemp=ui->input("Do you want to continue?(Y/N) ");
+			}
+			if(inputTemp == "N")
+			{
+				break;
+			}
 			continue;
+		}
+		inputTemp=ui->input("Do you want to continue?(Y/N) ");
+		while(inputTemp != "Y" && inputTemp != "N"){
+			ui->output("Please select Y or N");
+			inputTemp=ui->input("Do you want to continue?(Y/N) ");
+		}
+		if(inputTemp == "N")
+		{
+			break;
 		}
 	}
 	cout << "Game over. ";
