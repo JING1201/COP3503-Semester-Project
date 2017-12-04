@@ -1,9 +1,8 @@
-/*
- * UI.h
- *
- *  Created on: Nov 27, 2017
- *      Author: lowji
- */
+//******************************************************************************
+//
+// File Name:     ConsoleUI.h
+//
+// File Overview: Header file of ConsoleUI.cpp 
 
 #ifndef CONSOLEUI_H_
 #define CONSOLEUI_H_
