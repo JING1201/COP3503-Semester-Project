@@ -71,11 +71,11 @@ int main(){
 			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
-			while(inputTemp != "Y" && inputTemp != "N"){
+			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
 				ui->output("Please select Y or N");
 				inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			}
-			if(inputTemp == "N")
+			if(inputTemp == "N" || inputTemp == "n")
 			{
 				break;
 			}
@@ -89,11 +89,11 @@ int main(){
 			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
-			while(inputTemp != "Y" && inputTemp != "N"){
+			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
 				ui->output("Please select Y or N");
 				inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			}
-			if(inputTemp == "N")
+			if(inputTemp == "N" || inputTemp == "n")
 			{
 				break;
 			}
@@ -107,11 +107,11 @@ int main(){
 			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
-			while(inputTemp != "Y" && inputTemp != "N"){
+			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
 				ui->output("Please select Y or N");
 				inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			}
-			if(inputTemp == "N")
+			if(inputTemp == "N" || inputTemp == "n")
 			{
 				break;
 			}
@@ -125,11 +125,11 @@ int main(){
 			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
-			while(inputTemp != "Y" && inputTemp != "N"){
+			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
 				ui->output("Please select Y or N");
 				inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			}
-			if(inputTemp == "N")
+			if(inputTemp == "N" || inputTemp == "n")
 			{
 				break;
 			}
@@ -137,11 +137,11 @@ int main(){
 		}
 		bd->printBoard();
 		inputTemp=ui->input("Do you want to continue?(Y/N) ");
-		while(inputTemp != "Y" && inputTemp != "N"){
+		while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
 			ui->output("Please select Y or N");
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 		}
-		if(inputTemp == "N")
+		if(inputTemp == "N" || inputTemp == "n")
 		{
 			break;
 		}
