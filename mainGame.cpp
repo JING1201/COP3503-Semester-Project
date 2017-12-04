@@ -62,7 +62,7 @@ int main(){
 		ui->output("---------------ROUND "+to_string(countRound)+" BEGIN------------\n");
 		foldFlag=false;
 		bd->clearBoard();
-		ui->output("------------Begin Pre-flop---------------");
+		ui->output("------------Begin Pre-flop---------------\n");
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
 			//there's probably an easier way to do this
@@ -79,7 +79,7 @@ int main(){
 			}
 			continue;
 		}
-		ui->output("------------Begin Flop---------------");
+		ui->output("------------Begin Flop---------------\n");
 		foldFlag=bd->flop();
 		if (foldFlag){
 			bd->clearBoard();
@@ -95,7 +95,7 @@ int main(){
 			}
 			continue;
 		}
-		ui->output("--------------Begin Turn---------------");
+		ui->output("--------------Begin Turn---------------\n");
 		foldFlag=bd->turn();
 		if (foldFlag){
 			bd->clearBoard();
@@ -111,7 +111,7 @@ int main(){
 			}
 			continue;
 		}
-		ui->output("--------------Begin River---------------");
+		ui->output("--------------Begin River---------------\n");
 		foldFlag=bd->river();
 		if (foldFlag){
 			bd->clearBoard();
@@ -138,7 +138,7 @@ int main(){
 		{
 			break;
 		}
-		ui->output("-----------------END OF ROUND "+to_string(countRound)+"---------------");
+		ui->output("-----------------END OF ROUND "+to_string(countRound)+"---------------\n");
 	}
 	ui->output("You have played "+to_string(countRound)+" round(s).");
 	if(human->getTotalChips() > AI->getTotalChips()){

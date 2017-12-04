@@ -269,14 +269,3 @@ Hand* helper::bestHand(Card card0, Card card1, Card card2, Card card3, Card card
 }
 
 
-
- /* namespace std */
-
-/*int main(){
-	helper* help=new helper();
-	help->setStrengthChart();
-	Card* one=new Card(12,1);
-	Card* two=new Card(11,2);
-	cout<<help->getStrength(one,two);
-}*/
-

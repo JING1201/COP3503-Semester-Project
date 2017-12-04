@@ -55,6 +55,7 @@ void Board::setCommunity()
 void Board::printBoard()
 {
 	ConsoleUI* ui=new ConsoleUI();
+	ui->output("*************************************");
 	ui->output("");
 	ui->output(AI->getName()+":\t$"+to_string(AI->getTotalChips()));
 	ui->output("\t$"+to_string(AI->getTempPool()));
@@ -64,7 +65,7 @@ void Board::printBoard()
 	ui->output("\t$"+to_string(human->getTempPool()));
 	ui->output(human->getName()+":\t$"+to_string(human->getTotalChips()));
 	ui->output("");
-	ui->output("*******************************");
+	ui->output("*************************************\n");
 }
 
 bool Board::run()
@@ -395,9 +396,9 @@ bool Board::river()
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
 	ui->output("");
-	ui->output("");
-	ui->output("Your total chips: "+to_string(human->getTotalChips()));
-	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
+	//ui->output("");
+	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 	do
 	{
 		if (smallBlindPlayer==1){
@@ -435,6 +436,7 @@ bool Board::river()
 void Board::result()
 {
 	ConsoleUI* ui=new ConsoleUI();
+	ui->output("----------RESULTS----------");
 	Hand* humanBest=help->bestHand((human->getHandOne()),(human->getHandTwo()),
 					community[0],community[1],community[2],community[3],community[4]);
 	Hand* AIBest=help->bestHand((AI->getHandOne()),(AI->getHandTwo()),
@@ -460,15 +462,15 @@ void Board::result()
 	AIBest->printHand();
 	ui->output("");
 	if (result==1){
-		ui->output("You won.");
+		ui->output("You won.\n");
 		human->setTotalChips(human->getTotalChips()+pot);
 	}
 	else if (result==0){
-		ui->output("AI won");
+		ui->output("AI won. \n");
 		AI->setTotalChips(AI->getTotalChips()+pot);
 	}
 	else{
-		ui->output("Tie");
+		ui->output("Tie. \n");
 		human->setTotalChips(human->getTotalChips()+pot/2);
 		AI->setTotalChips(AI->getTotalChips()+pot/2);
 	}
