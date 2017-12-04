@@ -242,6 +242,7 @@ bool Board::preflop()
 			flag=this->runAI();
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
 				return true;
 			}
 		}

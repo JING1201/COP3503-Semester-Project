@@ -120,6 +120,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 	}
 	case 0:
 	{
+		ui->output("AI folded.");
 		return true; //fold
 	}
 	}
