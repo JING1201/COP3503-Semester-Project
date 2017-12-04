@@ -122,13 +122,13 @@ bool Board::run()
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by?");
-		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips(), AI->getTotalChips()) || stoi(r) % smallBlind != 0)
+		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()) || stoi(r) % smallBlind != 0)
 		{
 			if(!help->isInt(r))
 				ui->output("Input must be an integer.");
 			else if(stoi(r) < prev*2)
 				ui->output("Input must be at least double the previous bet.");
-			else if(stoi(r) > min(human->getTotalChips(), AI->getTotalChips()))
+			else if(stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()))
 				ui->output("Input must be less than or equal to the effective chip amount.");
 			else
 				ui->output("Input must be a multiple of the small blind.");
