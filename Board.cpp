@@ -59,13 +59,31 @@ bool Board::run()
 {
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
-	if(human->getTempPool() < AI->getTempPool())
+	if(human ->getTotalChips() < AI->getPrevBet())
+	{
+		inputTemp = ui->input("Fold (1) or All in (4)");
+		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=4))
+		{
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1) or All in (4)");
+		}
+	}
+	else if(human->getTotalChips() < 2*AI->getPrevBet())
+	{
+		inputTemp=ui->input("Fold (1), Call (2), or All in (4)\n");
+		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=3 &&stoi(inputTemp)!=4))
+		{
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1), Call (2), or All in (4)");
+		}
+	}
+	else if(human->getTempPool() < AI->getTempPool())
 	{
 		inputTemp=ui->input("Fold (1), Call (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3)
 		{
-			ui->output("Input must be an integer.");
-			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1), Call (2), or Raise (3)");
 		}
 	}
 	else
@@ -88,7 +106,7 @@ bool Board::run()
 		printBoard();
 		return false;
 	}
-	else
+	else if(inputTemp == "3")
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by?");
@@ -110,6 +128,19 @@ bool Board::run()
 		printBoard();
 		return false;
 	}
+	else
+	{
+		human->raise(human->getTotalChips());
+		pot=human->getTempPool()+AI->getTempPool();
+		if(human ->getTotalChips() < AI->getPrevBet())
+		{
+			result();
+			pot = 0;
+			return true;
+		}
+		printBoard();
+		return false;
+	}
 
 }
 
@@ -123,6 +154,8 @@ bool Board::runAI(){
 }
 bool Board::preflop()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	printBoard();
 	ConsoleUI* ui=new ConsoleUI();
 	string inputTemp;
@@ -176,6 +209,11 @@ bool Board::preflop()
 
 bool Board::flop()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}
 	ConsoleUI* ui=new ConsoleUI();
 	cout << "The flop is " << endl;
 	community[0].printCard();
@@ -219,6 +257,11 @@ bool Board::flop()
 
 bool Board::turn()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}	
 	cout << "The turn is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -261,6 +304,11 @@ bool Board::turn()
 
 bool Board::river()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}	
 	cout << "The river is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -299,8 +347,13 @@ bool Board::river()
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
-
+	result();
+	return false;
 	//after everything is done
+}
+void Board::result()
+{
+	ConsoleUI* ui=new ConsoleUI();
 	Hand* humanBest=help->bestHand((human->getHandOne()),(human->getHandTwo()),
 					community[0],community[1],community[2],community[3],community[4]);
 	Hand* AIBest=help->bestHand((AI->getHandOne()),(AI->getHandTwo()),
@@ -338,8 +391,6 @@ bool Board::river()
 		human->setTotalChips(human->getTotalChips()+pot/2);
 		AI->setTotalChips(AI->getTotalChips()+pot/2);
 	}
-	//cout<<"Result: "<<result<<endl;
-	return false;
 }
 
 void Board::clearBoard()
@@ -347,6 +398,8 @@ void Board::clearBoard()
 	human->resetTempPool();
 	AI->resetTempPool();
 	pot=0;
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	dek.shuffle();
 	setCommunity();
 	if (smallBlindPlayer==0){
