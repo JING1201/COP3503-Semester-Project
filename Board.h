@@ -17,7 +17,7 @@ class Board
 	private:
 		Player* human;
 		Player* AI;
-	    Deck dek = Deck();
+		Deck dek = Deck();
 		Card community[5];
 		int smallBlind=0;
 		int pot=0;
