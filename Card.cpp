@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include "Card.h"
+#include "ConsoleUI.h"
 using namespace std;
 //******************************************************************************
 // File scope (static) variable definitions
@@ -80,8 +81,8 @@ int Card::getSuit()
 //***************************************************************************
 void Card::printCard()
 {
-   this->printNumber();
-   this->printSuit();
+	ConsoleUI* ui=new ConsoleUI();
+	ui->output(this->printNumber()+printSuit());
 } // end Card::printCard
 
 //***************************************************************************
@@ -93,33 +94,33 @@ void Card::printCard()
 //             14 - A for Ace
 // Notes    : None
 //***************************************************************************
-void Card::printNumber()
+string Card::printNumber()
 {
    int number = this->getNumber(); // Obtain the card's number
 
    if (number > 1 && number < 11)
    	  {
-         cout << number;
+         return to_string(number);
       }
    	  else if (number == 11)
       {
-         cout << "J";
+         return "J";
       }
    	  else if (number == 12)
       {
-         cout << "Q";
+         return "Q";
       }
    	  else if (number == 13)
       {
-         cout << "K";
+         return "K";
       }
    	  else if (number == 14)
       {
-         cout << "A";
+         return "A";
       }
    	  else
    	  {
-   	     cout << " Invalid number ";
+   	     return " Invalid number ";
    	  }
 } // end Card::printNumber
 
@@ -129,29 +130,29 @@ void Card::printNumber()
 // Process  : Print the card suit
 // Notes    : None
 //***************************************************************************
-void Card::printSuit()
+string Card::printSuit()
 {
 	int suit = this->getSuit(); // Obtain the card's suit
    
 	if(suit == 0)
 	{
-	 cout << "\u2660" << " ";
+	 return "\u2660";
 	}
 	else if(suit == 1)
 	{
-	 cout << "\u2665" << " ";
+	 return "\u2665";
 	}
 	else if(suit == 2)
 	{
-	 cout << "\u2666" << " ";
+	 return "\u2666";
 	}
 	else if(suit == 3)
 	{
-	 cout << "\u2663" << " ";
+	 return "\u2663";
 	}
 	else
 	{
-	 cout << "Invalid suit" << " ";
+	 return "Invalid suit";
 	}
 } // end Card::printSuit
 

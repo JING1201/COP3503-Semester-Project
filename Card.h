@@ -9,7 +9,7 @@
 #ifndef Card_h
 #define Card_h
 using namespace std;
-
+#include <iostream>
 
 //
 // Class:    Card
@@ -29,8 +29,8 @@ public:
 	int getNumber();
 	int getSuit();
 	void printCard();
-	void printNumber();
-	void printSuit();
+	string printNumber();
+	string printSuit();
 
 }; // end class Card
    
