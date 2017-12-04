@@ -164,7 +164,7 @@ bool Board::runAI(){
 	ui->output("AI's turn: ");
 	AI->call(human); //for now
 	pot=AI->getTempPool()+human->getTempPool();
-	printBoard();
+	//printBoard();
 	//return true if fold
 	return false;
 }
@@ -179,12 +179,12 @@ bool Board::preflop()
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//force user to put in blind
 	pot=smallBlind*3;
 	if (smallBlindPlayer==1){
@@ -260,21 +260,21 @@ bool Board::flop()
 		return true;
 	}
 	ConsoleUI* ui=new ConsoleUI();
-	cout << "The flop is " << endl;
+	ui->output("The flop is ");
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
-	cout << endl;
+	ui->output("\n");
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	int i;
 	do
@@ -332,26 +332,26 @@ bool Board::turn()
 		result();
 		return true;
 	}	
-	cout << "The turn is " << endl;
+	ConsoleUI* ui=new ConsoleUI();
+	ui->output("The turn is ");
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
-	cout << endl;
-	ConsoleUI* ui=new ConsoleUI();
+	ui->output("\n");
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("");
-	ui->output("");
-	ui->output("Your total chips: "+to_string(human->getTotalChips()));
-	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
+	ui->output("\n");
+	//ui->output("");
+	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 	int i;
 	do
 	{
@@ -407,24 +407,24 @@ bool Board::river()
 		result();
 		return true;
 	}	
-	cout << "The river is " << endl;
+	ConsoleUI* ui=new ConsoleUI();
+	ui->output("The river is ");
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
 	community[4].printCard();
-	cout << endl;
-	ConsoleUI* ui=new ConsoleUI();
+	ui->output("\n");
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("");
+	ui->output("\n");
 	//ui->output("");
 	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
 	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
@@ -488,15 +488,15 @@ void Board::result()
 	for (int i=0;i<5;i++){
 		community[i].printCard();
 	}
-	ui->output("");
+	ui->output("\n");
 	ui->output("AI's cards: ");
 	AI->getHandOne().printCard();
 	AI->getHandTwo().printCard();
-	ui->output("");
+	ui->output("\n");
 	ui->output("Your cards: ");
 	human->getHandOne().printCard();
 	human->getHandTwo().printCard();
-	ui->output("");
+	ui->output("\n");
 	ui->output("Your best hand: ");
 	humanBest->printHand();
 	ui->output("");

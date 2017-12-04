@@ -41,7 +41,7 @@ string ConsoleUI::input(string request){
 }
 
 //******************************************************************************
-// Function : constructor                                   
+// Function : output
 // Process  : Outputs a string.
 // Notes    : None
 //******************************************************************************    
@@ -50,6 +50,9 @@ void ConsoleUI::output(string content){
 	cout<<content<<endl;
 }
 
+void ConsoleUI::print(string content){
+	cout<<content;
+}
 
 
 

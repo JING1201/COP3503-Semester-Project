@@ -17,6 +17,7 @@ class ConsoleUI {
 		void welcome();
 		string input(string request);
 		void output(string content);
+		void print (string content);
 };
 
 
