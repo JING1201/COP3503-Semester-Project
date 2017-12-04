@@ -81,29 +81,83 @@ void Player::call(Player* opp){
 }
 
 //only for AI
-bool Player::decision(int pot, int sb, int phase, Player * hum){
+void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card Card3, Card Card4, Card Card5, Card Card6){
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
 	helper* help=new helper();
 	help->setStrengthChart();
 	int strength=help->getStrength(&handOne,&handTwo);
+	int potential=help->getPotential(phase, handOne, handTwo, Card2, Card3, Card4, Card5, Card6);
 	srand((unsigned) time(NULL));
-	switch(strength){
-	case 4:
-	  {
-		int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
-		while (temp<hum->getTempPool()){
-			temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
-		}
-		if(temp > getTotalChips())
+	if(phase == 1)
+	{
+		switch(strength)
 		{
-			temp = getTotalChips();
-			ui->output("AI ships all-in!");
-		}
-		if(temp > hum->getTempPool() + hum->getTotalChips() - getTempPool())
-		{
-			temp = hum->getTempPool() + hum->getTotalChips() - getTempPool();
-			ui->output("AI ships all-in!");
+			case 4:
+			{
+				int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+				if(temp > getTotalChips())
+				{
+					temp = getTotalChips();
+					ui->output("AI ships all-in!");
+				}
+				if(temp > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+				{
+					temp = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+					ui->output("AI ships all-in!");
+				}
+				this->raise(temp);
+				this->setPrevBet(temp);
+				ui->output("AI raised $" + to_string(temp));
+				break;
+			}
+			case 3:
+			{
+				int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
+				if(temp2 > getTotalChips())
+				{
+					temp2 = getTotalChips();
+					ui->output("AI ships all-in!");
+				}
+				if(temp2 > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+				{
+					temp2 = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+					ui->output("AI ships all-in!");
+				}
+				this->setPrevBet(temp2);
+				ui->output("AI raised $" + to_string(temp2));
+				break;
+			}
+			case 2:
+			{
+				int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
+				if(temp3 > getTotalChips())
+				{
+					temp3 = getTotalChips();
+					ui->output("AI ships all-in!");
+				}
+				if(temp3 > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+				{
+					temp3 = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+					ui->output("AI ships all-in!");
+				}
+				this->raise(temp3);
+				this->setPrevBet(temp3);
+				ui->output("AI raised $" + to_string(temp3));
+				break;
+			}
+			case 1:
+			{
+				this->call(hum);
+				ui->output("AI Called.");
+				break;
+			}
+			case 0:
+			{
+				this->call(hum);
+				ui->output("AI Called.");
+				break;
+			}
 		}
 		this->raise(temp);
 		this->setPrevBet(temp);
@@ -138,11 +192,68 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 		break;
 	}
 	case 0:
+	}
+	else
 	{
-		ui->output("AI folded.");
-		return true; //fold
+		if(potential > 4)
+		{
+				int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+				if(temp > getTotalChips())
+				{
+					temp = getTotalChips();
+					ui->output("AI ships all-in!");
+				}
+				if(temp > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+				{
+					temp = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+					ui->output("AI ships all-in!");
+				}
+				this->raise(temp);
+				this->setPrevBet(temp);
+				ui->output("AI raised $" + to_string(temp));
+		}
+		else if(potential > 2)
+		{
+			int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
+			if(temp2 > getTotalChips())
+			{
+				temp2 = getTotalChips();
+				ui->output("AI ships all-in!");
+			}
+			if(temp2 > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+			{
+				temp2 = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+				ui->output("AI ships all-in!");
+			}
+			this->setPrevBet(temp2);
+			ui->output("AI raised $" + to_string(temp2));
+		}
+		else if(potential > 1)
+		{
+			int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
+			if(temp3 > getTotalChips())
+			{
+				temp3 = getTotalChips();
+				ui->output("AI ships all-in!");
+			}
+			if(temp3 > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+			{
+				temp3 = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+				ui->output("AI ships all-in!");
+			}
+			this->raise(temp3);
+			this->setPrevBet(temp3);
+			ui->output("AI raised $" + to_string(temp3));
+		}
+		else if(potential > 0)
+		{
+			this->call(hum);
+			ui->output("AI Called.");
+		}
+		else
+		{
+			this->call(hum);
+			ui->output("AI Called.");
+		}
 	}
-	}
-	return false;
 }
-
