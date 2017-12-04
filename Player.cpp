@@ -81,7 +81,7 @@ void Player::call(Player* opp){
 }
 
 //only for AI
-void Player::decision(int pot, int sb, int phase, Player * hum){
+bool Player::decision(int pot, int sb, int phase, Player * hum){
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
 	helper* help=new helper();
@@ -125,5 +125,6 @@ void Player::decision(int pot, int sb, int phase, Player * hum){
 		return true; //fold
 	}
 	}
+	return false;
 }
 
