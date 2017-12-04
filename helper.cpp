@@ -1,9 +1,8 @@
-/*
- * helper.cpp
- *
- *  Created on: Dec 2, 2017
- *      Author: lowji
- */
+//******************************************************************************
+//
+// File Name:     helper.cpp
+//
+// File Overview: ????
 
 #include "helper.h"
 #include "Hand.h"
@@ -12,6 +11,12 @@
 #include <sstream>
 using namespace std;
 
+//******************************************************************************
+// Function : constructor                                   
+// Process  : Initialize data members                     
+// Notes    : None
+//            
+//****************************************************************************** 
 
 helper::helper() {
 	// TODO Auto-generated constructor stub
@@ -22,7 +27,12 @@ helper::helper() {
 	}
 }
 
-//method to determine if a string is an integer
+//******************************************************************************
+// Function : isInt                                  
+// Process  : Determines if a string input is an integer
+// Notes    : None
+//******************************************************************************
+
 bool helper::isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
 
@@ -41,6 +51,13 @@ bool helper::isInt(string input){
 	return true;
 }
 
+//******************************************************************************
+// Function : getStrength                                   
+// Process  : Returns an integer representing the "strength" of the stronger 
+//		card
+// Notes    : This is done using a predetermined "strength chart"
+//******************************************************************************
+
 int helper::getStrength(Card* card1, Card* card2){
 	int num1=card1->getNumber();
 	int num2=card2->getNumber();
@@ -51,6 +68,12 @@ int helper::getStrength(Card* card1, Card* card2){
 		return strengthChart[14-min(num1,num2)][14-max(num1,num2)];
 	}
 }
+
+//******************************************************************************
+// Function : setStrengthChart()                                   
+// Process  : Creates a "strength chart" according to standard poker rules.
+// Notes    : None
+//******************************************************************************
 
 void helper::setStrengthChart(){
 	//https://howtoplaypokerinfo.com/wp-content/uploads/2016/06/Poker-cheat-sheet-card-printout-400x210.png
@@ -116,6 +139,13 @@ void helper::setStrengthChart(){
 	}*/
 }
 
+//******************************************************************************
+// Function : compareHands                                   
+// Process  : Compares 2 hands of cards and returns an integer according to who
+//		wins or draws.
+// Notes    : This is done according to standard poker rules.
+//******************************************************************************
+
 //returns 2 when they tie, 1 when hand1 wins, and 0 when hand 2 wins
 int helper::compareHands(Hand* hand1, Hand* hand2)
 {
@@ -178,6 +208,12 @@ int helper::compareHands(Hand* hand1, Hand* hand2)
 	}
 	return i;
 }
+
+//******************************************************************************
+// Function : bestHand                                   
+// Process  : Returns a pointer to the best possible hand given a set of 7 cards
+// Notes    : The function iterates through all 7C2 = 21 possibilities.
+//******************************************************************************
 
 //returns the highest value hand from a pool of 7 cards
 Hand* helper::bestHand(Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6)
