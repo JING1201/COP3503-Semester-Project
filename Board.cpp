@@ -180,12 +180,12 @@ bool Board::preflop()
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//force user to put in blind
 	pot=smallBlind*3;
 	if (smallBlindPlayer==1){
@@ -212,10 +212,9 @@ bool Board::preflop()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			bool flag=this->runAI();
+			bool flag=this->runAI(1);
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
 				return true;
 			}
 			if(i > 0 && human->getTempPool()==AI->getTempPool() && first != 0)
@@ -240,10 +239,9 @@ bool Board::preflop()
 			{
 				break;
 			}
-			flag=this->runAI();
+			flag=this->runAI(1);
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
 				return true;
 			}
 		}
@@ -262,21 +260,21 @@ bool Board::flop()
 		return true;
 	}
 	ConsoleUI* ui=new ConsoleUI();
-	ui->output("The flop is ");
+	cout << "The flop is " << endl;
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
-	ui->output("\n");
+	cout << endl;
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	int i;
 	do
@@ -284,13 +282,8 @@ bool Board::flop()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			bool flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
-			flag=this->run();
+			this->runAI(2);
+			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -312,12 +305,7 @@ bool Board::flop()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
+			this->runAI(2);
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -333,40 +321,35 @@ bool Board::turn()
 	{
 		result();
 		return true;
-	}	
-	ConsoleUI* ui=new ConsoleUI();
-	ui->output("The turn is ");
+	}
+	cout << "The turn is " << endl;
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
-	ui->output("\n");
+	cout << endl;
+	ConsoleUI* ui=new ConsoleUI();
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("\n");
-	//ui->output("");
-	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
-	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
+	ui->output("");
+	ui->output("");
+	ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 	int i;
 	do
 	{
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			bool flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
-			flag=this->run();
+			this->runAI(3);
+			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -388,12 +371,7 @@ bool Board::turn()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
+			this->runAI(3);
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -408,25 +386,25 @@ bool Board::river()
 	{
 		result();
 		return true;
-	}	
-	ConsoleUI* ui=new ConsoleUI();
-	ui->output("The river is ");
+	}
+	cout << "The river is " << endl;
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
 	community[3].printCard();
 	community[4].printCard();
-	ui->output("\n");
+	cout << endl;
+	ConsoleUI* ui=new ConsoleUI();
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
-	ui->output("\n");
+	ui->output("");
 	//ui->output("");
 	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
 	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
@@ -436,13 +414,8 @@ bool Board::river()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			bool flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
-			flag=this->run();
+			this->runAI(4);
+			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -464,12 +437,7 @@ bool Board::river()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			flag=this->runAI();
-			if (flag==true){
-				human->setTotalChips(human->getTotalChips()+pot);
-				ui->output("You won!");
-				return true;
-			}
+			this->runAI(4);
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -490,15 +458,15 @@ void Board::result()
 	for (int i=0;i<5;i++){
 		community[i].printCard();
 	}
-	ui->output("\n");
+	ui->output("");
 	ui->output("AI's cards: ");
 	AI->getHandOne().printCard();
 	AI->getHandTwo().printCard();
-	ui->output("\n");
+	ui->output("");
 	ui->output("Your cards: ");
 	human->getHandOne().printCard();
 	human->getHandTwo().printCard();
-	ui->output("\n");
+	ui->output("");
 	ui->output("Your best hand: ");
 	humanBest->printHand();
 	ui->output("");
