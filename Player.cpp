@@ -91,12 +91,17 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 	switch(strength){
 	case 4:
 	  {
-	    int temp;
-	  do{
-		temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
-	  
-	  }
-	  while(temp<hum->getTempPool());
+	        int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+		if(temp > getTotalChips())
+		{
+			temp = getTotalChips();
+			ui->output("AI ships all-in!");
+		}
+		if(temp > hum->getTempPool() + hum->getTotalChips() - getTempPool())
+		{
+			temp = hum->getTempPool() + hum->getTotalChips() - getTempPool();
+			ui->output("AI ships all-in!");
+		}
 		this->raise(temp);
 		this->setPrevBet(temp);
 		ui->output("AI raised $" + to_string(temp));
