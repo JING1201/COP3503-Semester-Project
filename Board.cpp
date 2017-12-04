@@ -124,6 +124,12 @@ bool Board::run()
 	{
 		human->raise(human->getTotalChips());
 		pot=human->getTempPool()+AI->getTempPool();
+		if(human ->getTotalChips() < AI->getPrevBet())
+		{
+			result();
+			pot = 0;
+			return true;
+		}
 		printBoard();
 		return false;
 	}
@@ -318,8 +324,14 @@ bool Board::river()
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
+	result();
+	//cout<<"Result: "<<result<<endl;
+	return false;
+}
 
-	//after everything is done
+void Board::result()
+{
+	ConsoleUI* ui=new ConsoleUI();
 	Hand* humanBest=help->bestHand((human->getHandOne()),(human->getHandTwo()),
 					community[0],community[1],community[2],community[3],community[4]);
 	Hand* AIBest=help->bestHand((AI->getHandOne()),(AI->getHandTwo()),
@@ -357,10 +369,7 @@ bool Board::river()
 		human->setTotalChips(human->getTotalChips()+pot/2);
 		AI->setTotalChips(AI->getTotalChips()+pot/2);
 	}
-	//cout<<"Result: "<<result<<endl;
-	return false;
 }
-
 void Board::clearBoard()
 {
 	human->resetTempPool();
