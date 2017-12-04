@@ -2,7 +2,7 @@
 //
 // File Name:     ConsoleUI.cpp
 //
-// File Overview: Controls the input and output of the poker game.	
+// File Overview: It is a wrapper class for the command line input and output.
 
 #include "ConsoleUI.h"
 
