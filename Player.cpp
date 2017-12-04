@@ -80,7 +80,6 @@ void Player::call(Player* opp){
 	setTotalChips(totalChips-change);
 }
 
-//only for AI
 void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card Card3, Card Card4, Card Card5, Card Card6){
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
@@ -159,39 +158,6 @@ void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 				break;
 			}
 		}
-		this->raise(temp);
-		this->setPrevBet(temp);
-		ui->output("AI raised $" + to_string(temp));
-		break;
-	}
-	case 3:
-	{
-	  int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
-	  while (temp2<hum->getTempPool()){
-		  temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
-	  }
-		this->setPrevBet(temp2);
-		ui->output("AI raised $" + to_string(temp2));
-		break;
-	}
-	case 2:
-	  {
-	    int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
-	    while (temp3<hum->getTempPool()){
-	    	temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
-	    }
-		this->raise(temp3);
-		this->setPrevBet(temp3);
-		ui->output("AI raised $" + to_string(temp3));
-		break;
-	}
-	case 1:
-	{
-		this->call(hum);
-		ui->output("AI Called.");
-		break;
-	}
-	case 0:
 	}
 	else
 	{
