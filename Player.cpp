@@ -77,35 +77,51 @@ void Player::call(Player* opp){
 }
 
 //only for AI
-void Player::decision(int pot, int sb, Player * hum){
+void Player::decision(int pot, int sb, int phase, Player * hum){
 	string inputTemp;
-	helper* help=new helper();
 	ConsoleUI* ui = new ConsoleUI();
+	helper* help=new helper();
 	help->setStrengthChart();
 	int strength=help->getStrength(&handOne,&handTwo);
+	srand((unsigned) time(NULL));
 	switch(strength){
 	case 4:
-		this->raise(pot);
-		this->setPrevBet(pot);
-		ui->output("Case 4: AI raised $" + to_string(pot));
-		break;
-	case 3:
-		this->raise(pot*2/3/sb*sb);
-		this->setPrevBet(pot*2/3/sb*sb);
-		ui->output("Case 3: AI raised $"+to_string(pot*2/3/sb*sb));
-		break;
-	case 2:
-		this->raise(pot/3/sb*sb);
-		this->setPrevBet(pot/3/sb*sb);
-		ui->output("Case 2: AI raised $"+to_string(pot/3/sb*sb));
-		break;
-	case 1:
-		this->call(hum);
-		ui->output("Case 1: AI called.");
-		break;
-	case 0:
-		this->call(hum);
-		ui->output("Case 0: AI called.");
+	{
+		int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+		this->raise(temp);
+		this->setPrevBet(temp);
+		ui->output("AI raised $" + to_string(temp));
 		break;
 	}
+	case 3:
+	{
+		int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
+		this->setPrevBet(temp2);
+		ui->output("AI raised $" + to_string(temp2));
+		break;
+	}
+	case 2:
+	{
+		int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
+		this->raise(temp3);
+		this->setPrevBet(temp3);
+		ui->output("AI raised $" + to_string(temp3));
+		break;
+	}
+	case 1:
+	{
+		int temp4 = ((pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb);
+		this->raise(temp4);
+		this->setPrevBet(temp4);
+		ui->output("AI raised $" + to_string(temp4));
+		break;
+	}
+	case 0:
+	{
+		this->call(hum);
+		ui->output("AI Called.");
+		break;
+	}
+	}
 }
+
