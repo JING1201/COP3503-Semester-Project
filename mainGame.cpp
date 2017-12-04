@@ -84,6 +84,9 @@ int main(){
 		ui->output("------------Begin Flop---------------");
 		foldFlag=bd->flop();
 		if (foldFlag){
+			human->resetTempPool();
+			AI->resetTempPool();
+			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
@@ -99,6 +102,9 @@ int main(){
 		ui->output("--------------Begin Turn---------------");
 		foldFlag=bd->turn();
 		if (foldFlag){
+			human->resetTempPool();
+			AI->resetTempPool();
+			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
@@ -114,6 +120,9 @@ int main(){
 		ui->output("--------------Begin River---------------");
 		foldFlag=bd->river();
 		if (foldFlag){
+			human->resetTempPool();
+			AI->resetTempPool();
+			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
