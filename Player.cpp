@@ -86,14 +86,17 @@ void Player::decision(int pot, int sb, Player * hum){
 	switch(strength){
 	case 4:
 		this->raise(pot);
+		this->setPrevBet(pot);
 		ui->output("AI raised $" + to_string(pot));
 		break;
 	case 3:
 		this->raise(pot*2/3/sb*sb);
+		this->setPrevBet(pot*2/3/sb*sb);
 		ui->output("AI raised $"+to_string(pot*2/3/sb*sb));
 		break;
 	case 2:
 		this->raise(pot/3/sb*sb);
+		this->setPrevBet(pot/3/sb*sb);
 		ui->output("AI raised $"+to_string(pot/3/sb*sb));
 		break;
 	case 1:
