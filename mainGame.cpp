@@ -64,6 +64,7 @@ int main(){
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
 			//there's probably an easier way to do this
+			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
 				ui->output("Please select Y or N");
@@ -77,6 +78,7 @@ int main(){
 		}
 		foldFlag=bd->flop();
 		if (foldFlag){
+			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
 				ui->output("Please select Y or N");
@@ -90,6 +92,7 @@ int main(){
 		}
 		foldFlag=bd->turn();
 		if (foldFlag){
+			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
 				ui->output("Please select Y or N");
@@ -103,6 +106,7 @@ int main(){
 		}
 		foldFlag=bd->river();
 		if (foldFlag){
+			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
 				ui->output("Please select Y or N");
@@ -114,6 +118,7 @@ int main(){
 			}
 			continue;
 		}
+		bd->printBoard();
 		inputTemp=ui->input("Do you want to continue?(Y/N) ");
 		while(inputTemp != "Y" && inputTemp != "N"){
 			ui->output("Please select Y or N");
@@ -127,9 +132,11 @@ int main(){
 		cout << endl << "******************************************";
 		cout << endl << "******************************************" << endl;
 	}
-	if(human->getTotalChips() > 0)
-		cout << "Congratulations you have won the heads-up against our AI.";
-	else
+	if(human->getTotalChips() > AI->getTotalChips())
+		cout << "Congratulations you have won some chips from our AI.";
+	else if(human->getTotalChips() <= 0)
 		cout << "Unfortunately, you have lost all of your chips. Do you want to start a new game?";
+	else
+		cout << "You lost some of your chips overall. Do you want to start a new game?";
 
 }
