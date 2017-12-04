@@ -195,6 +195,11 @@ bool Board::preflop()
 
 bool Board::flop()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}
 	human->setPrevBet(0);
 	AI->setPrevBet(0);
 	ConsoleUI* ui=new ConsoleUI();
@@ -240,6 +245,11 @@ bool Board::flop()
 
 bool Board::turn()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}
 	human->setPrevBet(0);
 	AI->setPrevBet(0);
 	cout << "The turn is " << endl;
@@ -284,6 +294,11 @@ bool Board::turn()
 
 bool Board::river()
 {
+	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
+	{
+		result();
+		return true;
+	}
 	human->setPrevBet(0);
 	AI->setPrevBet(0);
 	cout << "The river is " << endl;
