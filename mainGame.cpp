@@ -136,11 +136,12 @@ int main(){
 		ui->output("-----------------END OF ROUND "+to_string(countRound)+"---------------");
 	}
 	ui->output("You have played "+to_string(countRound)+" rounds.");
-	if(human->getTotalChips() > AI->getTotalChips())
-		cout << "Congratulations!! You have won some chips from our AI.";
+	if(human->getTotalChips() > AI->getTotalChips()){
+		ui->output("Congratulations you have won "+ to_string((human->getTotalChips() - AI->getTotalChips()) / 2)+" chips from our AI.");
+	}
 	else if(human->getTotalChips() <= 0)
-		cout << "Unfortunately, you have lost all of your chips. Do you want to start a new game?";
+		ui->output("Unfortunately, you have lost all of your chips. Better luck next time!");
 	else
-		cout << "You lost some of your chips overall. Do you want to start a new game?";
+		ui->output("You left the game with "+to_string(human->getTotalChips())+ ".");
 
 }
