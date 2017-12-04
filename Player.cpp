@@ -9,7 +9,7 @@
 #include "Card.h"
 #include "helper.h"
 #include "Board.h"
-
+#include "ConsoleUI.h"
 Player::Player(string name){
 	this->name=name;
 }
@@ -80,23 +80,29 @@ void Player::call(Player* opp){
 void Player::decision(int pot, int sb, Player * hum){
 	string inputTemp;
 	helper* help=new helper();
+	ConsoleUI* ui = new ConsoleUI();
 	help->setStrengthChart();
 	int strength=help->getStrength(&handOne,&handTwo);
 	switch(strength){
 	case 4:
 		this->raise(pot);
+		ui->output("AI raised $" + to_string(pot));
 		break;
 	case 3:
 		this->raise(pot*2/3/sb*sb);
+		ui->output("AI raised $"+to_string(pot*2/3/sb*sb));
 		break;
 	case 2:
 		this->raise(pot/3/sb*sb);
+		ui->output("AI raised $"+to_string(pot/3/sb*sb));
 		break;
 	case 1:
 		this->call(hum);
+		ui->output("AI called.");
 		break;
 	case 0:
 		this->call(hum);
+		ui->output("AI called.");
 		break;
 	}
 }
