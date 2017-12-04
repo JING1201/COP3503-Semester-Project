@@ -8,9 +8,8 @@
 
 #ifndef Card_h
 #define Card_h
-using namespace std;
 #include <iostream>
-
+using namespace std;
 //
 // Class:    Card
 //
