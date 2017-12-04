@@ -50,13 +50,17 @@ void Board::setCommunity()
 
 void Board::printBoard()
 {
-	cout << "";
-	cout << endl << AI->getName()    << ": $" << AI->getTotalChips() << endl;
-	cout <<"     $" <<AI->getTempPool() << endl;
-	cout << endl <<"Pot $" << pot << endl << endl;
-	cout <<"     $" <<human->getTempPool() << endl;
-	cout << human->getName() << ": $" << human->getTotalChips() << endl << endl;
-	cout <<"*******************************" << endl;
+	ConsoleUI* ui=new ConsoleUI();
+	ui->output("");
+	ui->output(AI->getName()+":\t$"+to_string(AI->getTotalChips()));
+	ui->output("\t$"+to_string(AI->getTempPool()));
+	ui->output("");
+	ui->output("Pot:\t$"+to_string(pot));
+	ui->output("");
+	ui->output("\t$"+to_string(human->getTempPool()));
+	ui->output(human->getName()+":\t$"+to_string(human->getTotalChips()));
+	ui->output("");
+	ui->output("*******************************");
 }
 
 bool Board::run()
@@ -182,6 +186,7 @@ bool Board::preflop()
 		ui->output("You paid the small blind: "+to_string(smallBlind));
 		ui->output("AI paid the big blind: "+to_string(smallBlind*2));
 	}
+	printBoard();
 	ui->output("");
 	ui->output("Your total chips: "+to_string(human->getTotalChips()));
 	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
