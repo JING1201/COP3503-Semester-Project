@@ -1,3 +1,9 @@
+//******************************************************************************
+//
+// File Name:     Player.h
+//
+// File Overview: The helper class of Player.cpp
+
 #include "Deck.h"
 #include <iostream>
 #include "Card.h"
