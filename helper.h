@@ -18,6 +18,7 @@ private:
 public:
 	helper();
 	bool isInt(string input);
+	int getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6);
 	int getStrength(Card* card1, Card* card2);
 	void setStrengthChart();
 	int compareHands(Hand* hand1, Hand* hand2);
