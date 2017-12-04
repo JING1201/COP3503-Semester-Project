@@ -127,10 +127,8 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 	}
 	case 1:
 	{
-		int temp4 = ((pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb);
-		this->raise(temp4);
-		this->setPrevBet(temp4);
-		ui->output("AI raised $" + to_string(temp4));
+		this->call(hum);
+		ui->output("AI Called.");
 		break;
 	}
 	case 0:
