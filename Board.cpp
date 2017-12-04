@@ -214,6 +214,7 @@ bool Board::preflop()
 			bool flag=this->runAI();
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
 				return true;
 			}
 			if(i > 0 && human->getTempPool()==AI->getTempPool() && first != 0)
@@ -281,7 +282,12 @@ bool Board::flop()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
@@ -304,7 +310,12 @@ bool Board::flop()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -347,7 +358,12 @@ bool Board::turn()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
@@ -370,7 +386,12 @@ bool Board::turn()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -413,7 +434,12 @@ bool Board::river()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 			bool flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
@@ -436,7 +462,12 @@ bool Board::river()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				ui->output("You won!");
+				return true;
+			}
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
