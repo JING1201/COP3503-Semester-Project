@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
 #include "Deck.h"
 #include "Hand.h"
 #include "Card.h"
@@ -141,9 +142,13 @@ bool Board::preflop()
 	else{
 		human->raise(smallBlind);
 		AI->raise(smallBlind*2);
+		ui->output("You paid the small blind: "+to_string(smallBlind));
+		ui->output("AI paid the big blind: "+to_string(smallBlind*2));
 	}
-	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
-	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
+	ui->output("");
+	ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
+
 	cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	while(human->getTempPool()!=AI->getTempPool()) //player facing a bet
 	{
