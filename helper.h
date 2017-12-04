@@ -1,9 +1,8 @@
-/*
- * helper.h
- *
- *  Created on: Dec 2, 2017
- *      Author: lowji
- */
+//******************************************************************************
+//
+// File Name:     helper.h
+//
+// File Overview: Header file for helper class
 
 #ifndef HELPER_H_
 #define HELPER_H_
