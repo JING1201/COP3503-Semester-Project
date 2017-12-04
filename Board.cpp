@@ -50,9 +50,13 @@ void Board::setCommunity()
 
 void Board::printBoard()
 {
-	cout << "Current pot size  : " << pot << endl;
-	cout << "Your total chips: " << human->getTotalChips() << endl;
-	cout << "AI's total chips: " << AI->getTotalChips() << endl << endl;
+	cout << "";
+	cout << endl << AI->getName()    << ": $" << AI->getTotalChips() << endl;
+	cout <<"     $" <<AI->getTempPool() << endl;
+	cout << endl <<"Pot $" << pot << endl << endl;
+	cout <<"     $" <<human->getTempPool() << endl;
+	cout << human->getName() << ": $" << human->getTotalChips() << endl << endl;
+	cout <<"*******************************" << endl;
 }
 
 bool Board::run()
