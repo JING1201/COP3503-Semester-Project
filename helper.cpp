@@ -2,7 +2,8 @@
 //
 // File Name:     helper.cpp
 //
-// File Overview: ????
+// File Overview: A class that contains helper methods that do not belong to
+//			any conceptual class in the project
 
 #include "helper.h"
 #include "Hand.h"
