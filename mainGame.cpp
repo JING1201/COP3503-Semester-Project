@@ -57,7 +57,7 @@ int main(){
     Board* bd = new Board(human,AI,1);
     bd->setBlind(stoi(inputTemp));
     bool foldFlag;
-	while(human->getTotalChips() != 0 && AI->getTotalChips() != 0)
+	while(human->getTotalChips() > 0 && AI->getTotalChips() > 0)
 	{
 		foldFlag=false;
 		bd->clearBoard();
@@ -123,8 +123,13 @@ int main(){
 		{
 			break;
 		}
+		cout << endl << "******************************************";
+		cout << endl << "******************************************";
+		cout << endl << "******************************************" << endl;
 	}
-	cout << "Game over. ";
+	if(human->getTotalChips() > 0)
+		cout << "Congratulations you have won the heads-up against our AI.";
+	else
+		cout << "Unfortunately, you have lost all of your chips. Do you want to start a new game?";
 
 }
-
