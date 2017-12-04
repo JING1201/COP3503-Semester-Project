@@ -90,8 +90,13 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 	srand((unsigned) time(NULL));
 	switch(strength){
 	case 4:
-	{
-		int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+	  {
+	    int temp;
+	  do{
+		temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
+	  
+	  }
+	  while(temp<hum->getTempPool());
 		this->raise(temp);
 		this->setPrevBet(temp);
 		ui->output("AI raised $" + to_string(temp));
@@ -99,14 +104,22 @@ bool Player::decision(int pot, int sb, int phase, Player * hum){
 	}
 	case 3:
 	{
-		int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
+	  int temp2;
+	  do{
+		  temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
+	  }
+	  while(temp2<hum->getTempPool());
 		this->setPrevBet(temp2);
 		ui->output("AI raised $" + to_string(temp2));
 		break;
 	}
 	case 2:
-	{
-		int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
+	  {
+	    int temp3;
+	  do{
+	      temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
+	  }
+	  while(temp3<hum->getTempPool());
 		this->raise(temp3);
 		this->setPrevBet(temp3);
 		ui->output("AI raised $" + to_string(temp3));
