@@ -288,7 +288,7 @@ bool Board::flop()
 				ui->output("You won!");
 				return true;
 			}
-			bool flag=this->run();
+			flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -310,7 +310,7 @@ bool Board::flop()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			bool flag=this->runAI();
+			flag=this->runAI();
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
 				ui->output("You won!");
@@ -364,7 +364,7 @@ bool Board::turn()
 				ui->output("You won!");
 				return true;
 			}
-			bool flag=this->run();
+			flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -386,7 +386,7 @@ bool Board::turn()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			bool flag=this->runAI();
+			flag=this->runAI();
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
 				ui->output("You won!");
@@ -440,7 +440,7 @@ bool Board::river()
 				ui->output("You won!");
 				return true;
 			}
-			bool flag=this->run();
+			flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -462,7 +462,7 @@ bool Board::river()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			bool flag=this->runAI();
+			flag=this->runAI();
 			if (flag==true){
 				human->setTotalChips(human->getTotalChips()+pot);
 				ui->output("You won!");
