@@ -158,6 +158,7 @@ bool Board::runAI(){
 	AI->call(human); //for now
 	pot=AI->getTempPool()+human->getTempPool();
 	printBoard();
+	//return true if fold
 	return false;
 }
 bool Board::preflop()
@@ -196,8 +197,12 @@ bool Board::preflop()
 	{
 		if (smallBlindPlayer==1){
 			//AI goes first
-			this->runAI();
-			bool flag=this->run();
+			bool flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
+			flag=this->run();
 			if (flag==true){
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
@@ -210,7 +215,11 @@ bool Board::preflop()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI();
+			flag=this->runAI();
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
 		}
 	}
 	return false;
