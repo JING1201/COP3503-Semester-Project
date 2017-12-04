@@ -251,6 +251,8 @@ bool Board::preflop()
 
 bool Board::flop()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	check = 0;
 	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
 	{
@@ -310,6 +312,8 @@ bool Board::flop()
 
 bool Board::turn()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	check = 0;
 	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
 	{
@@ -371,6 +375,8 @@ bool Board::turn()
 
 bool Board::river()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	check = 0;
 	if(AI->getTotalChips() == 0 || human->getTotalChips() == 0)
 	{
