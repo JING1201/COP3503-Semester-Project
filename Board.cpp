@@ -51,8 +51,8 @@ void Board::setCommunity()
 void Board::printBoard()
 {
 	cout << "Current pot size  : " << pot << endl;
-	cout << "Your stack size is: " << human->getTotalChips() << endl;
-	cout << "AI's stack size is: " << AI->getTotalChips() << endl << endl;
+	cout << "Your total chips: " << human->getTotalChips() << endl;
+	cout << "AI's total chips: " << AI->getTotalChips() << endl << endl;
 }
 
 bool Board::run()

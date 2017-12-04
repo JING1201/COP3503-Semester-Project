@@ -51,7 +51,7 @@ int main(){
 
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
-	ui->output("================GAME BEGINS================");
+	ui->output("================GAME BEGINS================\n");
     Board* bd = new Board(human,AI,1);
     bd->setBlind(stoi(inputTemp));
     bool foldFlag;
@@ -59,7 +59,7 @@ int main(){
 	while(human->getTotalChips() > 0 && AI->getTotalChips() > 0)
 	{
 		countRound++;
-		ui->output("---------------ROUND "+to_string(countRound)+" BEGIN------------");
+		ui->output("---------------ROUND "+to_string(countRound)+" BEGIN------------\n");
 		foldFlag=false;
 		bd->clearBoard();
 		ui->output("------------Begin Pre-flop---------------");
