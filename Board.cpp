@@ -69,6 +69,7 @@ void Board::printBoard()
 
 bool Board::run()
 {
+	printBoard();
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
 	ui->output("Your turn: \n");
@@ -127,7 +128,7 @@ bool Board::run()
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by? ");
-		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()) || stoi(r) % smallBlind != 0);
+		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()) || stoi(r) % smallBlind != 0)
 		{
 			if(!help->isInt(r))
 				ui->output("Input must be an integer.");
@@ -201,7 +202,6 @@ bool Board::preflop()
 		ui->output("You paid the small blind: "+to_string(smallBlind));
 		ui->output("AI paid the big blind: "+to_string(smallBlind*2));
 	}
-	printBoard();
 	ui->output("");
 	//ui->output("Your total chips: "+to_string(human->getTotalChips()));
 	//ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
@@ -276,7 +276,6 @@ bool Board::flop()
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
 	ui->output("");
-	printBoard();
 	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	do
 	{
