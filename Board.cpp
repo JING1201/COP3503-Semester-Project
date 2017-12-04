@@ -135,6 +135,8 @@ bool Board::preflop()
 	if (smallBlindPlayer==1){
 		AI->raise(smallBlind);
 		human->raise(smallBlind*2);
+		ui->output("AI paid the small blind: "+to_string(smallBlind));
+		ui->output("You paid the big blind: "+to_string(smallBlind*2));
 	}
 	else{
 		human->raise(smallBlind);

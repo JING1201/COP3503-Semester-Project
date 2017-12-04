@@ -47,18 +47,22 @@ int main(){
 	ui->output("");
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
-	
+	ui->output("");
 
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
-
+	ui->output("================GAME BEGINS================");
     Board* bd = new Board(human,AI,1);
     bd->setBlind(stoi(inputTemp));
     bool foldFlag;
+    int countRound=0;
 	while(human->getTotalChips() > 0 && AI->getTotalChips() > 0)
 	{
+		countRound++;
+		ui->output("---------------ROUND "+to_string(countRound)+" BEGIN------------");
 		foldFlag=false;
 		bd->clearBoard();
+		ui->output("------------Begin Pre-flop---------------");
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
 			//there's probably an easier way to do this
@@ -74,6 +78,7 @@ int main(){
 			}
 			continue;
 		}
+		ui->output("------------Begin Flop---------------");
 		foldFlag=bd->flop();
 		if (foldFlag){
 			bd->printBoard();
@@ -88,6 +93,7 @@ int main(){
 			}
 			continue;
 		}
+		ui->output("--------------Begin Turn---------------");
 		foldFlag=bd->turn();
 		if (foldFlag){
 			bd->printBoard();
@@ -102,6 +108,7 @@ int main(){
 			}
 			continue;
 		}
+		ui->output("--------------Begin River---------------");
 		foldFlag=bd->river();
 		if (foldFlag){
 			bd->printBoard();
@@ -126,12 +133,11 @@ int main(){
 		{
 			break;
 		}
-		cout << endl << "******************************************";
-		cout << endl << "******************************************";
-		cout << endl << "******************************************" << endl;
+		ui->output("-----------------END OF ROUND "+to_string(countRound)+"---------------");
 	}
+	ui->output("You have played "+to_string(countRound)+" rounds.");
 	if(human->getTotalChips() > AI->getTotalChips())
-		cout << "Congratulations you have won some chips from our AI.";
+		cout << "Congratulations!! You have won some chips from our AI.";
 	else if(human->getTotalChips() <= 0)
 		cout << "Unfortunately, you have lost all of your chips. Do you want to start a new game?";
 	else
