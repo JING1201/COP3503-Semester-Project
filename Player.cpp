@@ -80,7 +80,7 @@ void Player::call(Player* opp){
 	setTotalChips(totalChips-change);
 }
 
-void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card Card3, Card Card4, Card Card5, Card Card6){
+bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card Card3, Card Card4, Card Card5, Card Card6){
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
 	helper* help=new helper();
@@ -153,9 +153,8 @@ void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 			}
 			case 0:
 			{
-				this->call(hum);
-				ui->output("AI Called.");
-				break;
+				ui->output("AI folded.");
+				return true;
 			}
 		}
 	}
@@ -218,8 +217,9 @@ void Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 		}
 		else
 		{
-			this->call(hum);
-			ui->output("AI Called.");
+			ui->output("AI folded.");
+			return true;
 		}
 	}
+	return false;
 }
