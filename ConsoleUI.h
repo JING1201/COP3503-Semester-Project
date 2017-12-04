@@ -1,8 +1,9 @@
-//******************************************************************************
-//
-// File Name:     ConsoleUI.h
-//
-// File Overview: Header file of ConsoleUI.cpp 
+/*
+ * UI.h
+ *
+ *  Created on: Nov 27, 2017
+ *      Author: lowji
+ */
 
 #ifndef CONSOLEUI_H_
 #define CONSOLEUI_H_
@@ -16,7 +17,6 @@ class ConsoleUI {
 		void welcome();
 		string input(string request);
 		void output(string content);
-		void print (string content);
 };
 
 

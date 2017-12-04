@@ -82,7 +82,7 @@ int Card::getSuit()
 void Card::printCard()
 {
 	ConsoleUI* ui=new ConsoleUI();
-	ui->print(this->printNumber()+printSuit()+" ");
+	ui->output(this->printNumber()+printSuit());
 } // end Card::printCard
 
 //***************************************************************************

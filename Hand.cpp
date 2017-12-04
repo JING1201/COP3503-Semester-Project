@@ -259,7 +259,6 @@ void Hand::printHand()
    fifth.printCard();
 
    this->printType();
-   cout<<endl;
 }
 
 //***************************************************************************

@@ -1,10 +1,10 @@
 //******************************************************************************
 //
-// File Name:     Deck.h
+// Revision History:
 //
-// File Overview: Header file of Deck.cpp
-//			Represents a deck of 52 cards
-
+// Date           Author               Description
+// 11/27/2017     Jason Chen           Added class
+//******************************************************************************
 #ifndef DECK_H_
 #define DECK_H_
 #include "Card.h"

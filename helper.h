@@ -1,8 +1,9 @@
-//******************************************************************************
-//
-// File Name:     helper.h
-//
-// File Overview: Header file for helper class
+/*
+ * helper.h
+ *
+ *  Created on: Dec 2, 2017
+ *      Author: lowji
+ */
 
 #ifndef HELPER_H_
 #define HELPER_H_
@@ -18,8 +19,8 @@ private:
 public:
 	helper();
 	bool isInt(string input);
-	int getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6);
 	int getStrength(Card* card1, Card* card2);
+	int getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6);
 	void setStrengthChart();
 	int compareHands(Hand* hand1, Hand* hand2);
 	Hand* bestHand(Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6);

@@ -1,10 +1,10 @@
 //******************************************************************************
+// Board.h
+// Revision History:
 //
-// File Name:     Board.h
-//
-// File Overview: Header file for Board.cpp
-//			Represents the board on which the poker game is played
-//			Contains functions and variables related to the board
+// Date           Author               Description
+// 11/28/2017     Jason Chen           Added class
+//******************************************************************************
 
 #ifndef BOARD_H_
 #define BOARD_H_

@@ -1,9 +1,9 @@
-//******************************************************************************
-//
-// File Name:     helper.cpp
-//
-// File Overview: A class that contains helper methods that do not belong to
-//			any conceptual class in the project
+/*
+ * helper.cpp
+ *
+ *  Created on: Dec 2, 2017
+ *      Author: lowji
+ */
 
 #include "helper.h"
 #include "Hand.h"
@@ -12,12 +12,7 @@
 #include <sstream>
 using namespace std;
 
-//******************************************************************************
-// Function : constructor                                   
-// Process  : Initialize data members                     
-// Notes    : None
-//            
-//****************************************************************************** 
+namespace std {
 
 helper::helper() {
 	// TODO Auto-generated constructor stub
@@ -28,12 +23,7 @@ helper::helper() {
 	}
 }
 
-//******************************************************************************
-// Function : isInt                                  
-// Process  : Determines if a string input is an integer
-// Notes    : None
-//******************************************************************************
-
+//method to determine if a string is an integer
 bool helper::isInt(string input){
 	//Reference: https://stackoverflow.com/questions/20287186/how-to-check-if-the-input-is-a-valid-integer-without-any-other-chars
 
@@ -52,69 +42,6 @@ bool helper::isInt(string input){
 	return true;
 }
 
-int helper::getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6)
-{
-	if(phase == 1)
-	{
-		card5 = Card(1,4);
-		card6 = Card(0,4);
-	}
-	else if(phase == 2)
-	{
-		card6 = Card(0,4);
-	}
-	Hand* best = new Hand(card0,card1,card2,card3,card4);
-	Hand* comp;
-	int ori1;
-	int ori2;
-	for(int i = 0; i < 5; i++)
-	{
-		for(int j = i + 1; j < 6; j++)
-		{
-			vector<Card> temp6;
-			ori1 = i;
-			ori2 = j;
-			if(ori1 != 0 && ori2 != 0)
-			{
-				temp6.push_back(card0);
-			}
-			if(ori1 != 1 && ori2 != 1)
-			{
-				temp6.push_back(card1);
-			}
-			if(ori1 != 2 && ori2 != 2)
-			{
-				temp6.push_back(card2);
-			}
-			if(ori1 != 3 && ori2 != 3)
-			{
-				temp6.push_back(card3);
-			}
-			if(ori1 != 4 && ori2 != 4)
-			{
-				temp6.push_back(card4);
-			}
-			if(ori1 != 5 && ori2 != 5)
-			{
-				temp6.push_back(card5);
-			}
-			comp = new Hand(temp6[0],temp6[1],temp6[2],temp6[3],temp6[4]);
-			if(this->compareHands(comp,best) == 1)
-			{
-				best = comp;
-			}
-		}
-	}
-	return best->getType();
-}
-
-//******************************************************************************
-// Function : getStrength                                   
-// Process  : Returns an integer representing the "strength" of the stronger 
-//		card
-// Notes    : This is done using a predetermined "strength chart"
-//******************************************************************************
-
 int helper::getStrength(Card* card1, Card* card2){
 	int num1=card1->getNumber();
 	int num2=card2->getNumber();
@@ -125,12 +52,6 @@ int helper::getStrength(Card* card1, Card* card2){
 		return strengthChart[14-min(num1,num2)][14-max(num1,num2)];
 	}
 }
-
-//******************************************************************************
-// Function : setStrengthChart()                                   
-// Process  : Creates a "strength chart" according to standard poker rules.
-// Notes    : None
-//******************************************************************************
 
 void helper::setStrengthChart(){
 	//https://howtoplaypokerinfo.com/wp-content/uploads/2016/06/Poker-cheat-sheet-card-printout-400x210.png
@@ -196,12 +117,61 @@ void helper::setStrengthChart(){
 	}*/
 }
 
-//******************************************************************************
-// Function : compareHands                                   
-// Process  : Compares 2 hands of cards and returns an integer according to who
-//		wins or draws.
-// Notes    : This is done according to standard poker rules.
-//******************************************************************************
+int helper::getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6)
+{
+	if(phase == 1)
+	{
+		card5 = Card(1,4);
+		card6 = Card(0,4);
+	}
+	else if(phase == 2)
+	{
+		card6 = Card(0,4);
+	}
+	Hand* best = new Hand(card0,card1,card2,card3,card4);
+	Hand* comp;
+	int ori1;
+	int ori2;
+	for(int i = 0; i < 5; i++)
+	{
+		for(int j = i + 1; j < 6; j++)
+		{
+			vector<Card> temp6;
+			ori1 = i;
+			ori2 = j;
+			if(ori1 != 0 && ori2 != 0)
+			{
+				temp6.push_back(card0);
+			}
+			if(ori1 != 1 && ori2 != 1)
+			{
+				temp6.push_back(card1);
+			}
+			if(ori1 != 2 && ori2 != 2)
+			{
+				temp6.push_back(card2);
+			}
+			if(ori1 != 3 && ori2 != 3)
+			{
+				temp6.push_back(card3);
+			}
+			if(ori1 != 4 && ori2 != 4)
+			{
+				temp6.push_back(card4);
+			}
+			if(ori1 != 5 && ori2 != 5)
+			{
+				temp6.push_back(card5);
+			}
+			comp = new Hand(temp6[0],temp6[1],temp6[2],temp6[3],temp6[4]);
+			if(this->compareHands(comp,best) == 1)
+			{
+				best = comp;
+			}
+		}
+	}
+	return best->getType();
+}
 
 //returns 2 when they tie, 1 when hand1 wins, and 0 when hand 2 wins
 int helper::compareHands(Hand* hand1, Hand* hand2)
@@ -266,12 +236,6 @@ int helper::compareHands(Hand* hand1, Hand* hand2)
 	return i;
 }
 
-//******************************************************************************
-// Function : bestHand                                   
-// Process  : Returns a pointer to the best possible hand given a set of 7 cards
-// Notes    : The function iterates through all 7C2 = 21 possibilities.
-//******************************************************************************
-
 //returns the highest value hand from a pool of 7 cards
 Hand* helper::bestHand(Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6)
 {
@@ -324,4 +288,13 @@ Hand* helper::bestHand(Card card0, Card card1, Card card2, Card card3, Card card
 	return best;
 }
 
+} /* namespace std */
+
+/*int main(){
+	helper* help=new helper();
+	help->setStrengthChart();
+	Card* one=new Card(12,1);
+	Card* two=new Card(11,2);
+	cout<<help->getStrength(one,two);
+}*/
 
