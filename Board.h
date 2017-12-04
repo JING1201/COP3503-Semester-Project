@@ -32,7 +32,7 @@ class Board
 		void printStack();
 		//returns true if folded
 		bool run();
-		bool runAI();
+		bool runAI(int phase);
 		bool preflop();
 		bool flop();
 		bool turn();
