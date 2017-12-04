@@ -159,14 +159,15 @@ bool Board::run()
 
 }
 
-bool Board::runAI(){
+bool Board::runAI(int phase)
+{
 	ConsoleUI* ui = new ConsoleUI();
 	ui->output("AI's turn: ");
-	bool foldFlag=AI->decision(pot,smallBlind,1,human); //for now
+	AI->decision(pot, smallBlind, phase, human, community[0], community[1], community[2], community[3], community[4]); //for now
 	pot=AI->getTempPool()+human->getTempPool();
-	//printBoard();
+	printBoard();
 	//return true if fold
-	return foldFlag;
+	return false;
 }
 bool Board::preflop()
 {
