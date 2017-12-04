@@ -21,6 +21,7 @@ class Board
 		Card community[5];
 		int smallBlind=0;
 		int pot=0;
+		int check = 0;
 		helper* help;
 		int smallBlindPlayer; //1: ai goes first, 0: player goes first
 
