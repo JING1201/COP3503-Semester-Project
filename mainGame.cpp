@@ -127,6 +127,7 @@ int main(){
 			}
 			continue;
 		}
+		bd->clearBoard();
 		bd->printBoard();
 		inputTemp=ui->input("Do you want to continue?(Y/N) ");
 		while(inputTemp != "Y" && inputTemp != "N"){
