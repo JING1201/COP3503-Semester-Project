@@ -77,26 +77,26 @@ void Player::call(Player* opp){
 }
 
 //only for AI
-void Player::decision(int pot){
+void Player::decision(int pot, int sb, Player * hum){
 	string inputTemp;
 	helper* help=new helper();
 	help->setStrengthChart();
 	int strength=help->getStrength(&handOne,&handTwo);
 	switch(strength){
 	case 4:
-		this->raise(2*pot);
-		this->setPrevBet(2*pot);
+		this->raise(pot);
 		break;
 	case 3:
-		this->raise(pot*2/3);
-		this->setPrevBet(pot*2/3);
+		this->raise(pot*2/3/sb*sb);
 		break;
 	case 2:
-		this->raise(pot/3);
-		this->setPrevBet(pot/3);
+		this->raise(pot/3/sb*sb);
 		break;
-	default:
-		//this->call()
+	case 1:
+		this->call(hum);
+		break;
+	case 0:
+		this->call(hum);
 		break;
 	}
 }
