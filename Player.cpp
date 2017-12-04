@@ -10,8 +10,10 @@
 #include "helper.h"
 #include "Board.h"
 #include "ConsoleUI.h"
-#include "time.h"
-#include "stdio.h"
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 Player::Player(string name){
 	this->name=name;
 }
