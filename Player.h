@@ -28,11 +28,7 @@ class Player{
   void setTempPool(int bet);
   void resetTempPool();
   void raise(int newBet);
-  void check();
-  void fold();
   void blind(int bet);
-  Deck finalHands();
-  void gameOver();
   void call(Player* opp);
   void decision(int pot, int sb, Player * hum);
 };
