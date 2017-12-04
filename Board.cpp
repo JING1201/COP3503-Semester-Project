@@ -123,7 +123,7 @@ bool Board::run()
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by? ");
-		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()) || stoi(r) % smallBlind != 0);
+		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips() + human->getTempPool(), AI->getTotalChips() + AI->getTempPool()) || stoi(r) % smallBlind != 0)
 		{
 			if(!help->isInt(r))
 				ui->output("Input must be an integer.");
@@ -247,14 +247,12 @@ bool Board::flop()
 	community[0].printCard();
 	community[1].printCard();
 	community[2].printCard();
-<<<<<<< HEAD
+
 	cout << endl;
 	//print AI's hand
 	ui->output("AI's hand: ");
 	(AI->getHandOne()).printCard();
 	(AI->getHandTwo()).printCard();
-=======
->>>>>>> bd013e823e3aba595cdce6fa494a9af8efa96334
 	ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
