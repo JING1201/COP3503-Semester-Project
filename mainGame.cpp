@@ -40,7 +40,7 @@ int main(){
 
 	inputTemp=ui->input("How much do you want the small blind to be? ");
 	while(!help->isInt(inputTemp)||stoi(inputTemp)>(human->getTotalChips()/20)){
-		ui->output("Invalid input. \n Blind must be an integer that is less than or equal to 5% of your chips.");
+		ui->output("Invalid input.\nBlind must be an integer that is less than or equal to 5% of your chips.");
 		inputTemp=ui->input("How much do you want the small blind to be? ");
 	}
 

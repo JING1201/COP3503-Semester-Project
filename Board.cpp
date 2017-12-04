@@ -182,7 +182,7 @@ bool Board::preflop()
 	ui->output("Your total chips: "+to_string(human->getTotalChips()));
 	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	while(human->getTempPool()!=AI->getTempPool()) //player facing a bet
 	{
 		if (smallBlindPlayer==1){
@@ -226,9 +226,10 @@ bool Board::flop()
 	(human->getHandTwo()).printCard();
 	ui->output("");
 
-	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
-	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	ui->output("");
+	ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	do
 	{
 		if (smallBlindPlayer==1){
@@ -274,9 +275,9 @@ bool Board::turn()
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
 	ui->output("");
-	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
-	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	ui->output("");
+	ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 	do
 	{
 		if (smallBlindPlayer==1){
@@ -322,9 +323,9 @@ bool Board::river()
 	(human->getHandOne()).printCard();
 	(human->getHandTwo()).printCard();
 	ui->output("");
-	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
-	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	ui->output("");
+	ui->output("Your total chips: "+to_string(human->getTotalChips()));
+	ui->output("AI's total chips: "+to_string(AI->getTotalChips()));
 	do
 	{
 		if (smallBlindPlayer==1){
