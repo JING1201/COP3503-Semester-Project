@@ -12,7 +12,6 @@
 #include <sstream>
 using namespace std;
 
-namespace std {
 
 helper::helper() {
 	// TODO Auto-generated constructor stub
@@ -232,7 +231,9 @@ Hand* helper::bestHand(Card card0, Card card1, Card card2, Card card3, Card card
 	return best;
 }
 
-} /* namespace std */
+
+
+ /* namespace std */
 
 /*int main(){
 	helper* help=new helper();
