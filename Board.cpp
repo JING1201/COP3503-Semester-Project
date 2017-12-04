@@ -140,6 +140,8 @@ bool Board::runAI(){
 }
 bool Board::preflop()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	printBoard();
 	ConsoleUI* ui=new ConsoleUI();
 	string inputTemp;
@@ -187,6 +189,8 @@ bool Board::preflop()
 
 bool Board::flop()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	ConsoleUI* ui=new ConsoleUI();
 	cout << "The flop is " << endl;
 	community[0].printCard();
@@ -230,6 +234,8 @@ bool Board::flop()
 
 bool Board::turn()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	cout << "The turn is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -272,6 +278,8 @@ bool Board::turn()
 
 bool Board::river()
 {
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	cout << "The river is " << endl;
 	community[0].printCard();
 	community[1].printCard();
@@ -357,6 +365,8 @@ void Board::clearBoard()
 {
 	human->resetTempPool();
 	AI->resetTempPool();
+	human->setPrevBet(0);
+	AI->setPrevBet(0);
 	pot=0;
 	dek.shuffle();
 	setCommunity();
