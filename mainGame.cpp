@@ -126,15 +126,16 @@ int main(){
 		{
 			break;
 		}
-		cout << endl << "******************************************";
-		cout << endl << "******************************************";
-		cout << endl << "******************************************" << endl;
+		ui->output("******************************************");
+		ui->output("******************************************");
+		ui->output("******************************************");
+		ui->output("");
 	}
-	if(human->getTotalChips() > AI->getTotalChips())
-		cout << "Congratulations you have won some chips from our AI.";
+	if(human->getTotalChips() >= AI->getTotalChips())
+		ui->output("Congratulations you have won " << (human->getTotalChips() - AI->getTotalChips()) / 2 << " chips from our AI.");
 	else if(human->getTotalChips() <= 0)
-		cout << "Unfortunately, you have lost all of your chips. Do you want to start a new game?";
+		ui->output("Unfortunately, you have lost all of your chips. Better luck next time!");
 	else
-		cout << "You lost some of your chips overall. Do you want to start a new game?";
+		ui->output("You left the game with " << human->getTotalChips() << ".");
 
 }
