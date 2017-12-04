@@ -122,9 +122,7 @@ void Player::decision(int pot, int sb, int phase, Player * hum){
 	}
 	case 0:
 	{
-		this->call(hum);
-		ui->output("AI Called.");
-		break;
+		return true; //fold
 	}
 	}
 }

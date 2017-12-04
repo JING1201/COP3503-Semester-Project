@@ -162,11 +162,11 @@ bool Board::run()
 bool Board::runAI(){
 	ConsoleUI* ui = new ConsoleUI();
 	ui->output("AI's turn: ");
-	AI->call(human); //for now
+	bool foldFlag=AI->decision(pot,smallBlind,1,human); //for now
 	pot=AI->getTempPool()+human->getTempPool();
 	//printBoard();
 	//return true if fold
-	return false;
+	return foldFlag;
 }
 bool Board::preflop()
 {
