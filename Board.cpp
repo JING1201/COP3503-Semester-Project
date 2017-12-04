@@ -35,6 +35,10 @@ void Board::setBlind(int bld)
 	smallBlind = bld;
 }
 
+void Board::resetPot(){
+	pot=0;
+}
+
 void Board::setCommunity()
 {
 	for(int i = 0; i < 5; i++)

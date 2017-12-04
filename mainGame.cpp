@@ -66,6 +66,9 @@ int main(){
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
 			//there's probably an easier way to do this
+			human->resetTempPool();
+			AI->resetTempPool();
+			bd->resetPot();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N"){
@@ -135,13 +138,13 @@ int main(){
 		}
 		ui->output("-----------------END OF ROUND "+to_string(countRound)+"---------------");
 	}
-	ui->output("You have played "+to_string(countRound)+" rounds.");
+	ui->output("You have played "+to_string(countRound)+" round(s).");
 	if(human->getTotalChips() > AI->getTotalChips()){
-		ui->output("Congratulations you have won "+ to_string((human->getTotalChips() - AI->getTotalChips()) / 2)+" chips from our AI.");
+		ui->output("Congratulations you have won $"+ to_string((human->getTotalChips() - AI->getTotalChips()) / 2)+"from our AI.");
 	}
 	else if(human->getTotalChips() <= 0)
 		ui->output("Unfortunately, you have lost all of your chips. Better luck next time!");
 	else
-		ui->output("You left the game with "+to_string(human->getTotalChips())+ ".");
+		ui->output("You left the game with $"+to_string(human->getTotalChips())+ ".");
 
 }

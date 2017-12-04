@@ -28,6 +28,7 @@ class Board
 		Board(Player* hum, Player* AI, int smallBlindPlayer);
 		void setCommunity();
 		void setBlind(int bld);
+		void resetPot();
 		void printStack();
 
 		//returns true if folded
