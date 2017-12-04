@@ -32,7 +32,7 @@ int main(){
 
 	inputTemp=ui->input("How much do you want to buy-in? ");
 	while(!help->isInt(inputTemp)||stoi(inputTemp)<20){
-		ui->output("Invalid input. Input must be an integer larger than 20");
+		ui->output("Invalid input. Input must be an integer equal or larger than 20");
 		inputTemp=ui->input("How much do you want to buy-in? ");
 	}
 	human->setTotalChips(stoi(inputTemp));
