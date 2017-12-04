@@ -72,7 +72,7 @@ bool Board::run()
 		inputTemp=ui->input("Fold (1), Check (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3)
 		{
-			ui->output("Input must be an integer.");
+			ui->output("Input must be a choice number provided.");
 			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
 		}
 	}
@@ -91,9 +91,9 @@ bool Board::run()
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by?");
-		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > human->getTotalChips())
+		while (!help->isInt(r)|| stoi(r) < prev*2 || stoi(r) > min(human->getTotalChips(), AI->getTotalChips()) || stoi(r) % smallBlind != 0)
 		{
-			ui->output("Input must be an integer and at least double the previous bet.");
+			ui->output("Input must be (1) an integer multiple of the small blind (2) at least double the previous bet (3) less than your total chip count.");
 			r=ui->input("How much do you want to raise by?");
 		}
 		human->raise(stoi(r));
