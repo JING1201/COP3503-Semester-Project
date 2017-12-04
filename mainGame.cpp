@@ -44,9 +44,7 @@ int main(){
 		inputTemp=ui->input("How much do you want the small blind to be? ");
 	}
 
-
-
-
+	ui->output("");
 	ui->output("Your name is "+human->getName());
 	ui->output("Your opponent name is "+AI->getName());
 	

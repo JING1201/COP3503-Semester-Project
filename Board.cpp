@@ -168,7 +168,7 @@ bool Board::preflop()
 	}
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	while(human->getTempPool()!=AI->getTempPool()) //player facing a bet
 	{
 		if (smallBlindPlayer==1){
@@ -216,7 +216,7 @@ bool Board::flop()
 
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	do
 	{
 		if (smallBlindPlayer==1){
@@ -266,7 +266,7 @@ bool Board::turn()
 	ui->output("");
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	do
 	{
 		if (smallBlindPlayer==1){
@@ -316,7 +316,7 @@ bool Board::river()
 	ui->output("");
 	cout<<"AI total chips: "<<AI->getTotalChips()<<endl; //980
 	cout<<"Human total chips: "<<human->getTotalChips()<<endl;  //990
-	cout<<"small blind player : "<<smallBlindPlayer<<endl;
+	//cout<<"small blind player : "<<smallBlindPlayer<<endl;
 	do
 	{
 		if (smallBlindPlayer==1){

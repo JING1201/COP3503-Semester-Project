@@ -37,7 +37,6 @@ class Board
 		bool flop();
 		bool turn();
 		bool river();
-
 		void result();
 		void printBoard();
 		void clearBoard();

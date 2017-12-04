@@ -135,19 +135,19 @@ void Card::printSuit()
    
 	if(suit == 0)
 	{
-	 cout << "s" << " ";
+	 cout << "\u2660" << " ";
 	}
 	else if(suit == 1)
 	{
-	 cout << "h" << " ";
+	 cout << "\u2665" << " ";
 	}
 	else if(suit == 2)
 	{
-	 cout << "d" << " ";
+	 cout << "\u2666" << " ";
 	}
 	else if(suit == 3)
 	{
-	 cout << "c" << " ";
+	 cout << "\u2663" << " ";
 	}
 	else
 	{
