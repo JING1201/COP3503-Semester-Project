@@ -58,13 +58,31 @@ bool Board::run()
 {
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
-	if(human->getTempPool() < AI->getTempPool())
+	if(human ->getTotalChips() < AI->getPrevBet())
+	{
+		inputTemp = ui->input("Fold (1) or All in (4)");
+		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=4))
+		{
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1) or All in (4)");
+		}
+	}
+	else if(human->getTotalChips() < 2*AI->getPrevBet())
+	{
+		inputTemp=ui->input("Fold (1), Call (2), or All in (4)\n");
+		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=3 &&stoi(inputTemp)!=4))
+		{
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1), Call (2), or All in (4)");
+		}
+	}
+	else if(human->getTempPool() < AI->getTempPool())
 	{
 		inputTemp=ui->input("Fold (1), Call (2), or Raise (3)\n");
 		while (!help->isInt(inputTemp)||stoi(inputTemp)<1||stoi(inputTemp)>3)
 		{
-			ui->output("Input must be an integer.");
-			inputTemp=ui->input("Fold (1), Check (2), or Raise (3)");
+			ui->output("Input must a choice number provided");
+			inputTemp=ui->input("Fold (1), Call (2), or Raise (3)");
 		}
 	}
 	else
@@ -87,7 +105,7 @@ bool Board::run()
 		printBoard();
 		return false;
 	}
-	else
+	else if(inputTemp == "3")
 	{
 		int prev = AI->getPrevBet();
 		string r = ui->input("How much do you want to raise by?");
@@ -99,6 +117,13 @@ bool Board::run()
 		human->raise(stoi(r));
 		pot=human->getTempPool()+AI->getTempPool();
 		human->setPrevBet(stoi(r));
+		printBoard();
+		return false;
+	}
+	else
+	{
+		human->raise(human->getTotalChips());
+		pot=human->getTempPool()+AI->getTempPool();
 		printBoard();
 		return false;
 	}

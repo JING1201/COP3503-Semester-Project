@@ -85,12 +85,15 @@ void Player::decision(int pot){
 	switch(strength){
 	case 4:
 		this->raise(2*pot);
+		this->setPrevBet(2*pot);
 		break;
 	case 3:
 		this->raise(pot*2/3);
+		this->setPrevBet(pot*2/3);
 		break;
 	case 2:
 		this->raise(pot/3);
+		this->setPrevBet(pot/3);
 		break;
 	default:
 		//this->call()
