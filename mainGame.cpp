@@ -31,16 +31,16 @@ int main(){
 	helper* help=new helper();
 
 	inputTemp=ui->input("How much do you want to buy-in? ");
-	while(!help->isInt(inputTemp)){
-		ui->output("Invalid input. Input must be an integer.");
+	while(!help->isInt(inputTemp)||stoi(inputTemp)<20){
+		ui->output("Invalid input. Input must be an integer larger than 20");
 		inputTemp=ui->input("How much do you want to buy-in? ");
 	}
 	human->setTotalChips(stoi(inputTemp));
 	AI->setTotalChips(stoi(inputTemp));
 
 	inputTemp=ui->input("How much do you want the small blind to be? ");
-	while(!help->isInt(inputTemp)||stoi(inputTemp)>(human->getTotalChips()/10)){
-		ui->output("Invalid input. Blind must be an integer that is less than 10% of your chips.");
+	while(!help->isInt(inputTemp)||stoi(inputTemp)>(human->getTotalChips()/20)){
+		ui->output("Invalid input. \n Blind must be an integer that is less than or equal to 5% of your chips.");
 		inputTemp=ui->input("How much do you want the small blind to be? ");
 	}
 
