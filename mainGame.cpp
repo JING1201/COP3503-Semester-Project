@@ -61,7 +61,7 @@ int main(){
 		countRound++;
 		ui->output("---------------ROUND "+to_string(countRound)+" BEGIN------------\n");
 		foldFlag=false;
-		bd->clearBoard();
+		//bd->clearBoard();
 		ui->output("------------Begin Pre-flop---------------\n");
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){

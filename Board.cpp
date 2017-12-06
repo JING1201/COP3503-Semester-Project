@@ -186,14 +186,13 @@ bool Board::preflop()
 	ui->output("");
 	//force user to put in blind
 	pot=smallBlind*3;
-	if (smallBlindPlayer==0){
+	if (smallBlindPlayer==1){
 		AI->raise(smallBlind);
 		human->raise(smallBlind*2);
 		ui->output("AI paid the small blind: "+to_string(smallBlind));
 		ui->output("You paid the big blind: "+to_string(smallBlind*2));
 	}
 	else{
-		smallBlindPlayer=0;
 		human->raise(smallBlind);
 		AI->raise(smallBlind*2);
 		ui->output("You paid the small blind: "+to_string(smallBlind));
