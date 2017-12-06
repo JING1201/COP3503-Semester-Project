@@ -52,7 +52,7 @@ int main(){
 
 	//print table: your stack, small blind, big blind, pot(needs to make)
 	ui->output("================GAME BEGINS================\n");
-    Board* bd = new Board(human,AI,1);
+    Board* bd = new Board(human,AI,0);
     bd->setBlind(stoi(inputTemp));
     bool foldFlag;
     int countRound=0;
@@ -66,6 +66,7 @@ int main(){
 		foldFlag=bd->preflop(); //returns true if folded
 		if (foldFlag){
 			//there's probably an easier way to do this
+			bd->clearBoard();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
@@ -81,6 +82,7 @@ int main(){
 		ui->output("------------Begin Flop---------------\n");
 		foldFlag=bd->flop();
 		if (foldFlag){
+			bd->clearBoard();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
@@ -96,6 +98,7 @@ int main(){
 		ui->output("--------------Begin Turn---------------\n");
 		foldFlag=bd->turn();
 		if (foldFlag){
+			bd->clearBoard();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
@@ -111,6 +114,7 @@ int main(){
 		ui->output("--------------Begin River---------------\n");
 		foldFlag=bd->river();
 		if (foldFlag){
+			bd->clearBoard();
 			bd->printBoard();
 			inputTemp=ui->input("Do you want to continue?(Y/N) ");
 			while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){
@@ -123,6 +127,7 @@ int main(){
 			}
 			continue;
 		}
+		bd->clearBoard();
 		bd->printBoard();
 		inputTemp=ui->input("Do you want to continue?(Y/N) ");
 		while(inputTemp != "Y" && inputTemp != "N" && inputTemp != "y" && inputTemp != "n"){

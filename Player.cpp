@@ -96,7 +96,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 			case 4:
 			{
 				int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
-				if(getTempPool() < hum->getTempPool())
+				if(tempBetPool < hum->getTempPool())
 				{
 					this->call(hum);
 					ui->output("AI Called.");
@@ -120,7 +120,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 			case 3:
 			{
 				int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
-				if(getTempPool() < hum->getTempPool())
+				if(tempBetPool < hum->getTempPool())
 				{
 					this->call(hum);
 					ui->output("AI Called.");
@@ -143,7 +143,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 			case 2:
 			{
 				int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
-				if(getTempPool() < hum->getTempPool())
+				if(tempBetPool < hum->getTempPool())
 				{
 					this->call(hum);
 					ui->output("AI Called.");
@@ -187,7 +187,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 		if(potential > 4)
 		{
 				int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
-				if(getTempPool() < hum->getTempPool())
+				if(tempBetPool < hum->getTempPool())
 				{
 					this->call(hum);
 					ui->output("AI Called.");
@@ -212,7 +212,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 		else if(potential > 2)
 		{
 			int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
-			if(getTempPool() < hum->getTempPool())
+			if(tempBetPool < hum->getTempPool())
 			{
 				this->call(hum);
 				ui->output("AI Called.");
@@ -236,7 +236,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 		else if(potential > 1)
 		{
 			int temp3 = (pot * (200 + rand() % 100) / 250 / 3 + sb / 2) / sb * sb;
-			if(getTempPool() < hum->getTempPool())
+			if(tempBetPool < hum->getTempPool())
 			{
 				this->call(hum);
 				ui->output("AI Called.");

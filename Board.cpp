@@ -186,13 +186,14 @@ bool Board::preflop()
 	ui->output("");
 	//force user to put in blind
 	pot=smallBlind*3;
-	if (smallBlindPlayer==1){
+	if (smallBlindPlayer==0){
 		AI->raise(smallBlind);
 		human->raise(smallBlind*2);
 		ui->output("AI paid the small blind: "+to_string(smallBlind));
 		ui->output("You paid the big blind: "+to_string(smallBlind*2));
 	}
 	else{
+		smallBlindPlayer=0;
 		human->raise(smallBlind);
 		AI->raise(smallBlind*2);
 		ui->output("You paid the small blind: "+to_string(smallBlind));
@@ -280,8 +281,12 @@ bool Board::flop()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			this->runAI(2);
-			bool flag=this->run();
+			bool flag=this->runAI(2);
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
+			flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -303,7 +308,11 @@ bool Board::flop()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI(2);
+			flag=this->runAI(2);
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
@@ -346,8 +355,12 @@ bool Board::turn()
 		if (smallBlindPlayer==1){
 			//AI goes first
 			i = human->getTempPool()-AI->getTempPool();
-			this->runAI(3);
-			bool flag=this->run();
+			bool flag=this->runAI(3);
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
+			flag=this->run();
 			if(i > 0 && human->getTempPool()== AI->getTempPool())
 			{
 				break;
@@ -369,7 +382,11 @@ bool Board::turn()
 				AI->setTotalChips(AI->getTotalChips()+pot);
 				return true;
 			}
-			this->runAI(3);
+			flag=this->runAI(3);
+			if (flag==true){
+				human->setTotalChips(human->getTotalChips()+pot);
+				return true;
+			}
 		}
 	}
 	while(human->getTempPool()!=AI->getTempPool()); //player facing a bet
