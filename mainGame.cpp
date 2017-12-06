@@ -142,7 +142,7 @@ int main(){
 	}
 	ui->output("You have played "+to_string(countRound)+" round(s).");
 	if(human->getTotalChips() > AI->getTotalChips()){
-		ui->output("Congratulations you have won $"+ to_string((human->getTotalChips() - AI->getTotalChips()) / 2)+"from our AI.");
+		ui->output("Congratulations you have won $"+ to_string((human->getTotalChips() - AI->getTotalChips()) / 2)+" from our AI.");
 	}
 	else if(human->getTotalChips() <= 0)
 		ui->output("Unfortunately, you have lost all of your chips. Better luck next time!");
