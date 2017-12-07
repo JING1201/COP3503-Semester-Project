@@ -74,7 +74,7 @@ bool Board::run()
 	string inputTemp;
 	ConsoleUI* ui = new ConsoleUI();
 	ui->output("Your turn: \n");
-	if(human ->getTotalChips() < AI->getPrevBet())
+	if(AI->getTotalChips()+AI->getTempPool()-human->getTempPool() < AI->getPrevBet())
 	{
 		inputTemp = ui->input("Fold (1) or All in (4)");
 		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=4))
@@ -83,7 +83,7 @@ bool Board::run()
 			inputTemp=ui->input("Fold (1) or All in (4)");
 		}
 	}
-	else if(human->getTotalChips() < 2*AI->getPrevBet())
+	else if(AI->getTotalChips()+AI->getTempPool()-human->getTempPool()< 2*AI->getPrevBet())
 	{
 		inputTemp=ui->input("Fold (1), Call (2), or All in (4)\n");
 		while (!help->isInt(inputTemp)||(stoi(inputTemp)!=1 && stoi(inputTemp)!=2 &&stoi(inputTemp)!=4))
@@ -152,18 +152,18 @@ bool Board::run()
 		{
 			AI->raise(human->getTempPool() - AI->getTempPool());
 			pot = human->getTempPool()+AI->getTempPool();
-			result();
-			pot = 0;
-			printBoard();
+			//result();
+			//pot = 0;
+			//printBoard();
 			return true;
 		}
 		else if(tmp >= AI->getPrevBet())
 		{
 			AI->call(human);
 			pot = human->getTempPool()+AI->getTempPool();
-			result();
-			pot = 0;
-			printBoard();
+			//result();
+			//pot = 0;
+			//printBoard();
 			return true;
 		}
 	}
