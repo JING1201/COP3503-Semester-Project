@@ -172,19 +172,33 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 			}
 			case 0:
 			{
-				ui->output("AI folded");
-				return true;
+				if (tempBetPool==hum->getTempPool()){
+					this->call(hum);
+					ui->output("AI Called.");
+				}
+				else{
+					ui->output("AI folded");
+					return true;
+				}
+				break;
 			}
 			default:
 			{
-				ui->output("AI folded");
-				return true;
+				if (tempBetPool==hum->getTempPool()){
+					this->call(hum);
+					ui->output("AI Called.");
+				}
+				else{
+					ui->output("AI folded");
+					return true;
+				}
+				break;
 			}
 		}
 	}
 	else
 	{
-		if(potential > 4)
+		if(potential > 1)
 		{
 				int temp = (pot * (200 + rand() % 100) / 250 + sb / 2) / sb * sb;
 				if(tempBetPool < hum->getTempPool())
@@ -209,7 +223,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 					ui->output("AI raised $" + to_string(temp));
 				}
 		}
-		else if(potential > 2)
+		else if(potential > 0)
 		{
 			int temp2 = (pot * (200 + rand() % 100) / 250 * 2 / 3 + sb / 2) / sb * sb;
 			if(tempBetPool < hum->getTempPool())
@@ -229,6 +243,7 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 					temp2 = hum->getTempPool() + hum->getTotalChips() - getTempPool();
 					ui->output("AI ships all-in!");
 				}
+				this->raise(temp2);
 				this->setPrevBet(temp2);
 				ui->output("AI raised $" + to_string(temp2));
 			}
@@ -260,13 +275,25 @@ bool Player::decision(int pot, int sb, int phase, Player * hum, Card Card2, Card
 		}
 		else if(potential > 0)
 		{
-			ui->output("AI folded");
-			return true;
+			if (tempBetPool==hum->getTempPool()){
+				this->call(hum);
+				ui->output("AI Called.");
+			}
+			else{
+				ui->output("AI folded");
+				return true;
+			}
 		}
 		else
 		{
-			ui->output("AI folded");
-			return true;
+			if (tempBetPool==hum->getTempPool()){
+				this->call(hum);
+				ui->output("AI Called.");
+			}
+			else{
+				ui->output("AI folded");
+				return true;
+			}
 		}
 	}
 	return false;

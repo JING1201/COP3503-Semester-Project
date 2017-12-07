@@ -119,12 +119,12 @@ void helper::setStrengthChart(){
 
 int helper::getPotential(int phase, Card card0, Card card1, Card card2, Card card3, Card card4, Card card5, Card card6)
 {
-	if(phase == 1)
+	if(phase == 2)
 	{
 		card5 = Card(1,4);
 		card6 = Card(0,4);
 	}
-	else if(phase == 2)
+	else if(phase == 3)
 	{
 		card6 = Card(0,4);
 	}
