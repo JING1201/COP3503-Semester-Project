@@ -186,10 +186,10 @@ bool Board::preflop()
 	ConsoleUI* ui=new ConsoleUI();
 	string inputTemp;
 	//print AI's hand
-	ui->output("AI's hand: ");
-	(AI->getHandOne()).printCard();
-	(AI->getHandTwo()).printCard();
-	ui->output("");
+	//ui->output("AI's hand: ");
+	//(AI->getHandOne()).printCard();
+	//(AI->getHandTwo()).printCard();
+	//ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
@@ -275,10 +275,10 @@ bool Board::flop()
 	community[2].printCard();
 	cout << endl;
 	//print AI's hand
-	ui->output("AI's hand: ");
-	(AI->getHandOne()).printCard();
-	(AI->getHandTwo()).printCard();
-	ui->output("");
+	//ui->output("AI's hand: ");
+	//(AI->getHandOne()).printCard();
+	//(AI->getHandTwo()).printCard();
+	//ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
@@ -347,10 +347,10 @@ bool Board::turn()
 	cout << endl;
 	ConsoleUI* ui=new ConsoleUI();
 	//print AI's hand
-	ui->output("AI's hand: ");
-	(AI->getHandOne()).printCard();
-	(AI->getHandTwo()).printCard();
-	ui->output("");
+	//ui->output("AI's hand: ");
+	//(AI->getHandOne()).printCard();
+	//(AI->getHandTwo()).printCard();
+	//ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
@@ -421,10 +421,10 @@ bool Board::river()
 	cout << endl;
 	ConsoleUI* ui=new ConsoleUI();
 	//print AI's hand
-	ui->output("AI's hand: ");
-	(AI->getHandOne()).printCard();
-	(AI->getHandTwo()).printCard();
-	ui->output("");
+	//ui->output("AI's hand: ");
+	//(AI->getHandOne()).printCard();
+	//(AI->getHandTwo()).printCard();
+	//ui->output("");
 	//print user's hand
 	ui->output("Your hand: ");
 	(human->getHandOne()).printCard();
